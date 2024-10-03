@@ -10,10 +10,12 @@ int main() {
     Appwrite appwrite(projectId);
     Auth& auth = appwrite.getAuth();
 
-    if (auth.createAccount(email, password, userId)) {
-        std::cout << "Account created successfully!" << std::endl;
-    } else {
-        std::cout << "Failed to create account." << std::endl;
+    try {
+        if (auth.createAccount(email, password, userId)) {
+            std::cout << "Account created successfully!" << std::endl;
+        }
+    } catch (const AppwriteException& ex) {
+        std::cerr << "Exception: " << ex.what() << std::endl;
     }
 
     return 0;

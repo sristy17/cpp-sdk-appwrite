@@ -3,6 +3,8 @@
 
 #include <string>
 #include "Utils.hpp"
+#include "exceptions/AppwriteException.hpp"
+#include "enums/HttpStatus.hpp"
 
 class Auth {
 public:
