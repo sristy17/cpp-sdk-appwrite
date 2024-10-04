@@ -1,0 +1,18 @@
+#ifndef ACCOUNT_HPP
+#define ACCOUNT_HPP
+
+#include <string>
+#include "Utils.hpp"
+#include "exceptions/AppwriteException.hpp"
+#include "enums/HttpStatus.hpp"
+
+class Account {
+public:
+    void setup(const std::string& projectId);
+    bool createAccount(const std::string& email, const std::string& password, const std::string& userId, const std::string& name);
+    
+private:
+    std::string projectId;
+};
+
+#endif

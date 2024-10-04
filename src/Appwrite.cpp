@@ -1,7 +1,9 @@
 #include "Appwrite.hpp"
 
-Appwrite::Appwrite(const std::string& projectId) : projectId(projectId), auth(projectId) {}
+Appwrite::Appwrite(const std::string& projectId) : account() {
+    account.setup(projectId);
+}
 
-Auth& Appwrite::getAuth() {
-    return auth;
+Account& Appwrite::getAccount() {
+    return account;
 }

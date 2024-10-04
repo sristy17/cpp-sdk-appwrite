@@ -6,8 +6,15 @@ SRC_DIR = src
 INCLUDE_DIR = include
 EXAMPLES_DIR = examples
 
-example: $(SRC_DIR)/Appwrite.cpp $(SRC_DIR)/services/Auth.cpp $(SRC_DIR)/Utils.cpp $(SRC_DIR)/models/Account.cpp $(EXAMPLES_DIR)/example_auth.cpp
-	$(CXX) $(CXXFLAGS) -o auth_example $(SRC_DIR)/Appwrite.cpp $(SRC_DIR)/services/Auth.cpp $(SRC_DIR)/Utils.cpp $(SRC_DIR)/models/Account.cpp $(EXAMPLES_DIR)/example_auth.cpp $(LDFLAGS)
+SRCS = \
+    $(SRC_DIR)/Appwrite.cpp \
+    $(SRC_DIR)/services/Account.cpp \
+    $(SRC_DIR)/Utils.cpp \
+    $(SRC_DIR)/models/Account.cpp \
+    $(SRC_DIR)/Validator.cpp \
+
+createAccount: $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp
+	$(CXX) $(CXXFLAGS) -o tests/createAccount $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp $(LDFLAGS)
 
 clean:
-	rm -f auth_example
+	rm -f tests/*

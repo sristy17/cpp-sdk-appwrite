@@ -1,16 +1,16 @@
 #ifndef APPWRITE_HPP
 #define APPWRITE_HPP
 
-#include "Auth.hpp"
+#include "classes/Account.hpp"
 
 class Appwrite {
 public:
     Appwrite(const std::string& projectId);
-    Auth& getAuth();
+    Account& getAccount();
     
 private:
     std::string projectId;
-    Auth auth;
+    Account account;
 };
 
 #endif
