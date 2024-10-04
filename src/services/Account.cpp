@@ -27,6 +27,27 @@ bool Account::createAccount(const std::string& email, const std::string& passwor
         std::cout<<"Response : " << response;
         return true;
     } else {
-        throw AppwriteException("Error creating account. Status code: " + std::to_string(statusCode) + "\nResponse: " + response);
+        throw AppwriteException("Error creating account. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Account::createSession(const std::string& email, const std::string& password) {
+
+    Validator::validateAccountParams(email, password);
+    
+    std::string url = Config::API_BASE_URL + "/account/sessions/email";
+    std::string payload = "{\"email\": \"" + email + "\", \"password\": \"" + password + "\"}";
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+
+    std::string response;
+
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+    
+    if (statusCode == HttpStatus::CREATED) {
+
+        return response;
+
+    } else {
+        throw AppwriteException("Error creating session. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }

@@ -21,3 +21,12 @@ void Validator::validateAccountParams(const std::string& email, const std::strin
         throw std::invalid_argument("User ID cannot be empty.");
     }
 }
+
+void Validator::validateAccountParams(const std::string& email, const std::string& password) {
+    if (!isValidEmail(email)) {
+        throw std::invalid_argument("Invalid email format.");
+    }
+    if (password.length() < 8) {
+        throw std::invalid_argument("Password must be at least 8 characters long.");
+    }
+}

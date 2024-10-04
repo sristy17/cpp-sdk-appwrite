@@ -10,6 +10,7 @@ class Account {
 public:
     void setup(const std::string& projectId);
     bool createAccount(const std::string& email, const std::string& password, const std::string& userId, const std::string& name);
+    std::string createSession(const std::string& email, const std::string& password);
     
 private:
     std::string projectId;

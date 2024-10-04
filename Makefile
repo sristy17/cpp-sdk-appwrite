@@ -16,5 +16,8 @@ SRCS = \
 createAccount: $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createAccount $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp $(LDFLAGS)
 
+createSession: $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp
+	$(CXX) $(CXXFLAGS) -o tests/createSession $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp $(LDFLAGS)
+
 clean:
 	rm -f tests/*
