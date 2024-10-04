@@ -11,6 +11,8 @@ public:
     static bool isValidPhone(const std::string& phone);
     static void validateAccountParams(const std::string& email, const std::string& password, const std::string& userId);
     static void validateAccountParams(const std::string& email, const std::string& password);
+    static void validateDatabaseParams(const std::string& databaseId, const std::string& name);
+    
 };
 
 #endif

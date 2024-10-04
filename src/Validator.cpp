@@ -30,3 +30,15 @@ void Validator::validateAccountParams(const std::string& email, const std::strin
         throw std::invalid_argument("Password must be at least 8 characters long.");
     }
 }
+
+void Validator::validateDatabaseParams(const std::string& databaseId, const std::string& name){
+    std::regex databaseIdPattern("^[a-zA-Z0-9][a-zA-Z0-9._-]{0,35}$");
+    
+    if (!std::regex_match(databaseId, databaseIdPattern)) {
+        throw std::invalid_argument("Invalid databaseId. Must start with an alphanumeric character and can contain only alphanumeric characters, periods, hyphens, and underscores, with a max length of 36 characters.");
+    }
+
+    if (name.length() > 128) {
+        throw std::invalid_argument("Invalid name. Must be 128 characters or less.");
+    }
+}

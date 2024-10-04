@@ -2,10 +2,11 @@
 #define CONFIG_HPP
 
 #include <string>
+#include <vector>
 
 namespace Config {
     const std::string API_BASE_URL = "https://cloud.appwrite.io/v1";
-    std::vector<std::string> getHeaders(const std::string& projectId) {
+    static std::vector<std::string> getHeaders(const std::string& projectId) {
         return {
             "Content-Type: application/json",
             "X-Appwrite-Project: " + projectId
