@@ -22,5 +22,8 @@ createSession: $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp
 createDatabase: $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createDatabase $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp $(LDFLAGS)
 
+createCollection: $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp
+	$(CXX) $(CXXFLAGS) -o tests/createCollection $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp $(LDFLAGS)
+
 clean:
 	rm -f tests/*
