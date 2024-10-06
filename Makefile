@@ -25,5 +25,8 @@ createDatabase: $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp
 createCollection: $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createCollection $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp $(LDFLAGS)
 
+createDocument: $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp
+	$(CXX) $(CXXFLAGS) -o tests/createDocument $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp $(LDFLAGS)
+
 clean:
 	rm -f tests/*

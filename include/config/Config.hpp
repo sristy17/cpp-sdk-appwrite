@@ -9,6 +9,7 @@ namespace Config {
     static std::vector<std::string> getHeaders(const std::string& projectId) {
         return {
             "Content-Type: application/json",
+            "Accept: application/json",
             "X-Appwrite-Project: " + projectId
         };
     }
