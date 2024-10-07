@@ -13,14 +13,19 @@ SRCS = \
     $(SRC_DIR)/Utils.cpp \
     $(SRC_DIR)/Validator.cpp \
 
+# Account 
 createAccount: $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createAccount $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp $(LDFLAGS)
 
 createSession: $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createSession $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp $(LDFLAGS)
 
+# Database
 createDatabase: $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createDatabase $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp $(LDFLAGS)
+
+getDatabase: $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp
+	$(CXX) $(CXXFLAGS) -o tests/getDatabase $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp $(LDFLAGS)
 
 createCollection: $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createCollection $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp $(LDFLAGS)

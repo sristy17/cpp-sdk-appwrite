@@ -36,6 +36,31 @@ std::string Databases::create(const std::string &databaseId, const std::string &
     }
 }
 
+
+std::string Databases::get(const std::string& databaseId) {
+
+    if (databaseId.empty()) {
+        throw AppwriteException("Missing required parameter: 'databaseId'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching database. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+
+}
+
 std::string Databases::createCollection(const std::string& databaseId, const std::string& collectionId, const std::string& name,  bool enabled) {
 
     Validator::validateDatabaseParams(databaseId, name);
