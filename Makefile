@@ -24,12 +24,22 @@ createSession: $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp
 createDatabase: $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createDatabase $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp $(LDFLAGS)
 
+updateDatabase: $(SRCS) $(EXAMPLES_DIR)/database/updateDatabase.cpp
+	$(CXX) $(CXXFLAGS) -o tests/updateDatabase $(SRCS) $(EXAMPLES_DIR)/database/updateDatabase.cpp $(LDFLAGS)
+
 getDatabase: $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/getDatabase $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp $(LDFLAGS)
 
+listDatabase: $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp
+	$(CXX) $(CXXFLAGS) -o tests/listDatabase $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp $(LDFLAGS)
+
+
+# Database - Collection
 createCollection: $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createCollection $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp $(LDFLAGS)
 
+
+# Database - Document
 createDocument: $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createDocument $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp $(LDFLAGS)
 

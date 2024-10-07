@@ -61,6 +61,47 @@ std::string Databases::get(const std::string& databaseId) {
 
 }
 
+std::string Databases::list(){
+    std::string url = Config::API_BASE_URL + "/databases";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error listing databases. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::update(const std::string &databaseId, const std::string &name, bool enabled = false) {
+
+    Validator::validateDatabaseParams(databaseId, name);
+
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId;
+    std::string payload = "{\"name\": \"" + name +
+                          "\", \"enabled\": " + (enabled ? "true" : "false") + "}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::putRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error updating database. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 std::string Databases::createCollection(const std::string& databaseId, const std::string& collectionId, const std::string& name,  bool enabled) {
 
     Validator::validateDatabaseParams(databaseId, name);

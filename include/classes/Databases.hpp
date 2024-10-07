@@ -14,8 +14,10 @@ public:
     void setup(const std::string& apiKey, const std::string& projectId);
 
     // Database
-    std::string create(const std::string& databaseId, const std::string& name, bool enabled);
+    std::string list();
     std::string get(const std::string& databaseId);
+    std::string create(const std::string& databaseId, const std::string& name, bool enabled);
+    std::string update(const std::string& databaseId, const std::string& name, bool enabled);
     
     // collections
     std::string createCollection(const std::string& databaseId, const std::string& collectionId, const std::string& name,  bool enabled);
