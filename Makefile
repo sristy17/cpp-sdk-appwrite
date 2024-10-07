@@ -13,6 +13,19 @@ SRCS = \
     $(SRC_DIR)/Utils.cpp \
     $(SRC_DIR)/Validator.cpp \
 
+BINS = \
+    createAccount \
+    createSession \
+    createDatabase \
+    updateDatabase \
+    getDatabase \
+    listDatabase \
+    createCollection \
+    createDocument \
+
+# build all binaries
+all: $(BINS)
+
 # Account 
 createAccount: $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createAccount $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp $(LDFLAGS)
