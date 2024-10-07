@@ -167,3 +167,22 @@ std::string Databases::createDocument(const std::string& databaseId, const std::
         throw AppwriteException("Error creating document. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
+
+std::string Databases::getCollection(const std::string& databaseId, const std::string& collectionId){
+
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error listing collections. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}

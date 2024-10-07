@@ -51,6 +51,8 @@ listDatabase: $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp
 createCollection: $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createCollection $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp $(LDFLAGS)
 
+getCollection: $(SRCS) $(EXAMPLES_DIR)/database/getCollection.cpp
+	$(CXX) $(CXXFLAGS) -o tests/getCollection $(SRCS) $(EXAMPLES_DIR)/database/getCollection.cpp $(LDFLAGS)
 
 # Database - Document
 createDocument: $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp
