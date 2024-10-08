@@ -186,3 +186,26 @@ std::string Databases::getCollection(const std::string& databaseId, const std::s
         throw AppwriteException("Error listing collections. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
+
+std::string Databases::updateCollection(const std::string &databaseId, const std::string &collectionId, const std::string &name, bool enabled) {
+
+    Validator::validateDatabaseParams(databaseId, name);
+
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId;
+    std::string payload = "{\"name\": \"" + name +
+                          "\", \"enabled\": " + (enabled ? "true" : "false") + "}";
+   
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::putRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error updating collection. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
