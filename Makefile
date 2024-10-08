@@ -48,6 +48,10 @@ listDatabase: $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp
 
 
 # Database - Collection
+
+listCollection: $(SRCS) $(EXAMPLES_DIR)/database/listCollection.cpp
+	$(CXX) $(CXXFLAGS) -o tests/listCollection $(SRCS) $(EXAMPLES_DIR)/database/listCollection.cpp $(LDFLAGS)
+
 createCollection: $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createCollection $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp $(LDFLAGS)
 
