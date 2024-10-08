@@ -20,11 +20,12 @@ public:
     std::string update(const std::string& databaseId, const std::string& name, bool enabled);
 
     // collections
-     std::string listCollection();
+    std::string listCollection();
     std::string createCollection(const std::string& databaseId, const std::string& collectionId, const std::string& name,  bool enabled);
     std::string getCollection(const std::string& databaseId, const std::string& collectionId);
     std::string updateCollection(const std::string& databaseId,const std::string& collectionId, const std::string& name, bool enabled);
-
+    std::string deleteCollection(const std::string& databaseId, const std::string& collectionId);
+    
     // docs
     std::string createDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data);
 
