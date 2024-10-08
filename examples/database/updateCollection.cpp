@@ -6,7 +6,7 @@ int main() {
     std::string apiKey = "";
     std::string databaseId = "database123";
     std::string collectionId = "collectioasdgfdsn123";
-    std::string name = "sampledb112";
+    std::string name = "schanged_collection_name_112";
     bool enabled = true;
 
     Appwrite appwrite(projectId);
@@ -15,7 +15,7 @@ int main() {
     databases.setup(apiKey, projectId);
 
     try {
-        std::string response = databases.update(databaseId, collectionId, "newCollectionName");
+        std::string response = databases.updateCollection(databaseId, collectionId, name, enabled);
         std::cout << "collection updated successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
