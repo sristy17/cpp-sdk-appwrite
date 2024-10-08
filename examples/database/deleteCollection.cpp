@@ -5,7 +5,7 @@ int main() {
     std::string projectId = "66fbb5a100070a3a1d19";
     std::string apiKey = ""; 
     std::string databaseId = "database123";
-    std::string collectionId = "6705077b00195651cece";
+    std::string collectionId = "test123";
 
     Appwrite appwrite(projectId);
     Databases& databases = appwrite.getDatabases();

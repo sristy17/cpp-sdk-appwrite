@@ -238,7 +238,7 @@ std::string Databases::deleteCollection(const std::string& databaseId, const std
 
     int statusCode = Utils::deleteRequest(url, headers, response);
 
-    if (statusCode == HttpStatus::OK) { 
+    if (statusCode == HttpStatus::DELETED) { 
         return response; 
     } else {
         throw AppwriteException("Error deleting collection. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
