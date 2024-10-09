@@ -35,35 +35,35 @@ createSession: $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp
 
 # Database
 createDatabase: $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp
-	$(CXX) $(CXXFLAGS) -o tests/createDatabase $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o tests/database/createDatabase $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp $(LDFLAGS)
 
 updateDatabase: $(SRCS) $(EXAMPLES_DIR)/database/updateDatabase.cpp
-	$(CXX) $(CXXFLAGS) -o tests/updateDatabase $(SRCS) $(EXAMPLES_DIR)/database/updateDatabase.cpp $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o tests/database/updateDatabase $(SRCS) $(EXAMPLES_DIR)/database/updateDatabase.cpp $(LDFLAGS)
 
 getDatabase: $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp
-	$(CXX) $(CXXFLAGS) -o tests/getDatabase $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o tests/database/getDatabase $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp $(LDFLAGS)
 
 listDatabase: $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp
-	$(CXX) $(CXXFLAGS) -o tests/listDatabase $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o tests/database/listDatabase $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp $(LDFLAGS)
 
 
 # Database - Collection
 
-listCollection: $(SRCS) $(EXAMPLES_DIR)/database/listCollection.cpp
-	$(CXX) $(CXXFLAGS) -o tests/listCollection $(SRCS) $(EXAMPLES_DIR)/database/listCollection.cpp $(LDFLAGS)
+listCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/listCollection.cpp
+	$(CXX) $(CXXFLAGS) -o tests/collection/listCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/listCollection.cpp $(LDFLAGS)
 
-createCollection: $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp
-	$(CXX) $(CXXFLAGS) -o tests/createCollection $(SRCS) $(EXAMPLES_DIR)/database/createCollection.cpp $(LDFLAGS)
+createCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/createCollection.cpp
+	$(CXX) $(CXXFLAGS) -o tests/collection/createCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/createCollection.cpp $(LDFLAGS)
 
-getCollection: $(SRCS) $(EXAMPLES_DIR)/database/getCollection.cpp
-	$(CXX) $(CXXFLAGS) -o tests/getCollection $(SRCS) $(EXAMPLES_DIR)/database/getCollection.cpp $(LDFLAGS)
+getCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/getCollection.cpp
+	$(CXX) $(CXXFLAGS) -o tests/collection/getCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/getCollection.cpp $(LDFLAGS)
 
-updateCollection: $(SRCS) $(EXAMPLES_DIR)/database/updateCollection.cpp
-	$(CXX) $(CXXFLAGS) -o tests/updateCollection $(SRCS) $(EXAMPLES_DIR)/database/updateCollection.cpp $(LDFLAGS)
+updateCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/updateCollection.cpp
+	$(CXX) $(CXXFLAGS) -o tests/collection/updateCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/updateCollection.cpp $(LDFLAGS)
 
 
-deleteCollection: $(SRCS) $(EXAMPLES_DIR)/database/deleteCollection.cpp
-	$(CXX) $(CXXFLAGS) -o tests/deleteCollection $(SRCS) $(EXAMPLES_DIR)/database/deleteCollection.cpp $(LDFLAGS)
+deleteCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/deleteCollection.cpp
+	$(CXX) $(CXXFLAGS) -o tests/collection/deleteCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/deleteCollection.cpp $(LDFLAGS)
 
 # Database - Document
 createDocument: $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp
