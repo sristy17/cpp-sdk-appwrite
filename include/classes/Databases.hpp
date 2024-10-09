@@ -26,6 +26,9 @@ public:
     std::string updateCollection(const std::string& databaseId,const std::string& collectionId, const std::string& name, bool enabled);
     std::string deleteCollection(const std::string& databaseId, const std::string& collectionId);
     
+    //attribute
+     std::string createBooleanAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool defaultValue, bool required);
+
     // docs
     std::string createDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data);
 

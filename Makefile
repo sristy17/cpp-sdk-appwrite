@@ -48,7 +48,6 @@ listDatabase: $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp
 
 
 # Database - Collection
-
 listCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/listCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/collection/listCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/listCollection.cpp $(LDFLAGS)
 
@@ -68,6 +67,10 @@ deleteCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/deleteCollection.c
 # Database - Document
 createDocument: $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createDocument $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp $(LDFLAGS)
+
+#Collection-Attribute
+createBooleanAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createBooleanAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/createBooleanAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createBooleanAttribute.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*
