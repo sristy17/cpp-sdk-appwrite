@@ -21,6 +21,15 @@ Works around with Databases in Appwrite
 | `listCollection()`  | List the collection from the Appwrite project.                    | [Example](/examples/database/collection/listCollection.cpp) |
 | `deleteCollection()`  | Delete the collection from the Appwrite project using the unique collection ID.                    | [Example](/examples/database/collection/deleteCollection.cpp) |
 
+### Attributes
+
+| Method Name | Usage                                                                                          | Link                                                   |
+|-------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------|
+| `createBooleanAttribute()`  | Creates Boolean Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createBooleanAttribute.cpp) |
+| `createEmailAttribute()`  | Creates Email Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createEmailAttribute.cpp) |
+| `createEnumAttribute()`  | Creates Enum Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createEnumAttribute.cpp) |
+| `createFloatAttribute()`  | Creates Float Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createFloatAttribute.cpp) |
+
 ### Documents
 
 | Method Name | Usage                                                                                          | Link                                                   |
