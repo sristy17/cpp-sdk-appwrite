@@ -272,9 +272,7 @@ std::string Databases::createEmailAttribute(const std::string& databaseId, const
     
     std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/email";
 
-    std::string payload = "{\"key\": \"" + attributeId + "\", \"required\": " + (required ? "true" : "false") + 
-                          ", \"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + 
-                          ", \"array\": false}";
+    std::string payload = "{\"key\": \"" + attributeId + "\", \"required\": " + (required ? "true" : "false") +  ", \"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", \"array\": false}";
 
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);
@@ -286,5 +284,35 @@ std::string Databases::createEmailAttribute(const std::string& databaseId, const
         return response;
     } else {
         throw AppwriteException("Error creating email attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::createEnumAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements ) {
+   
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/enum" ;
+
+    std::string elementsStr = elements.empty() ? "null" : "[";
+    for (size_t i = 0; i < elements.size(); ++i) {
+        elementsStr += "\"" + elements[i] + "\"";
+        if (i < elements.size() - 1) {
+            elementsStr += ",";
+        }
+    }
+    if (!elements.empty()) elementsStr += "]";
+
+    std::string payload = "{" "\"key\": \"" + attributeId + "\", ""\"elements\": " + elementsStr + ", " "\"required\": " + (required ? "true" : "false") + ", "  "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", " "\"array\": " + (elements.empty() ? "false" : "true") + "}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::ATTRIBUTE_CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating Enum attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
