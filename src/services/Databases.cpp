@@ -259,9 +259,32 @@ std::string Databases::createBooleanAttribute(const std::string& databaseId, con
     std::string response;
     int statusCode = Utils::postRequest(url, payload, headers, response);
 
-    if (statusCode == HttpStatus::BOOLEAN_CREATED) {
+    if (statusCode == HttpStatus::ATTRIBUTE_CREATED) {
         return response;
     } else {
         throw AppwriteException("Error creating boolean attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::createEmailAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue) {
+    
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/email";
+
+    std::string payload = "{\"key\": \"" + attributeId + "\", \"required\": " + (required ? "true" : "false") + 
+                          ", \"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + 
+                          ", \"array\": false}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::ATTRIBUTE_CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating email attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }

@@ -27,8 +27,9 @@ public:
     std::string deleteCollection(const std::string& databaseId, const std::string& collectionId);
     
     //attribute
-     std::string createBooleanAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool defaultValue, bool required);
-
+    std::string createBooleanAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool defaultValue, bool required);
+    std::string createEmailAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue);
+  
     // docs
     std::string createDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data);
 
