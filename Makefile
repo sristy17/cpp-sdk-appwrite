@@ -75,6 +75,8 @@ createEmailAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/crea
 	$(CXX) $(CXXFLAGS) -o tests/attribute/createEmailAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createEmailAttribute.cpp $(LDFLAGS)
 createEnumAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createEnumAttribute.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/createEnumAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createEnumAttribute.cpp $(LDFLAGS)
+createFloatAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createFloatAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/createFloatAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createFloatAttribute.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*
