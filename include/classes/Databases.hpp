@@ -33,6 +33,9 @@ public:
     std::string createFloatAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, double min, double max, const std::string& defaultValue);
     std::string listAttributes(const std::string& databaseId, const std::string& collectionId);
 
+    std::string updateBooleanAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool defaultValue, bool required, const std::string& new_key);
+    std::string updateEmailAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, std::string& new_key);
+
     // docs
     std::string createDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data);
 
