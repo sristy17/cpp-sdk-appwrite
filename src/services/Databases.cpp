@@ -266,6 +266,26 @@ std::string Databases::createBooleanAttribute(const std::string& databaseId, con
     }
 }
 
+std::string Databases::updateBooleanAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool defaultValue, bool required, const std::string& new_key){
+    
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/boolean/" + attributeId;
+
+    std::string payload = "{\"newKey\": \"" + new_key + "\", \"default\": " + (defaultValue ? "true" : "false") + ", \"required\": " + (required ? "true" : "false") + "}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating boolean attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 std::string Databases::createEmailAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue) {
     
     Validator::validateDatabaseParams(databaseId, collectionId);
@@ -284,6 +304,27 @@ std::string Databases::createEmailAttribute(const std::string& databaseId, const
         return response;
     } else {
         throw AppwriteException("Error creating email attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::updateEmailAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, std::string& new_key) {
+    
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/email/" + attributeId;
+
+    std::string payload = "{\"newKey\": \"" + new_key + "\", \"required\": " + (required ? "true" : "false") +  ", \"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", \"array\": false}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating email attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
 

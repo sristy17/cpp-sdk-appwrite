@@ -69,5 +69,6 @@
         "iomanip": "cpp",
         "ranges": "cpp",
         "valarray": "cpp"
-    }
+    },
+    "makefile.configureOnOpen": true
 }

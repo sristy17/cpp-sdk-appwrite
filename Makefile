@@ -80,5 +80,10 @@ createFloatAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/crea
 listAttributes: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/listAttributes.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/listAttributes $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/listAttributes.cpp $(LDFLAGS)
 
+updateBooleanAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateBooleanAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/updateBooleanAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateBooleanAttribute.cpp $(LDFLAGS)
+updateEmailAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateEmailAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/updateEmailAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateEmailAttribute.cpp $(LDFLAGS)
+
 clean:
 	rm -f tests/*
