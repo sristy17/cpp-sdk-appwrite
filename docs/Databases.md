@@ -31,7 +31,9 @@ Works around with Databases in Appwrite
 | `createEmailAttribute()`  | Creates Email Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createEmailAttribute.cpp) |
 | `updateEmailAttribute()`  | Updates Email Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateEmailAttribute.cpp) |
 | `createEnumAttribute()`  | Creates Enum Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createEnumAttribute.cpp) |
+| `updateEnumAttribute()`  | Updates Enum Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateEnumAttribute.cpp) |
 | `createFloatAttribute()`  | Creates Float Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createFloatAttribute.cpp) |
+| `updateFloatAttribute()`  | Updates Float Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateFloatAttribute.cpp) |
 
 ### Documents
 
