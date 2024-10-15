@@ -415,6 +415,33 @@ std::string Databases::createFloatAttribute(const std::string& databaseId, const
     }
 }
 
+std::string Databases::updateFloatAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, double min, double max, const std::string& defaultValue, std::string& new_key) {
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/float/" + attributeId;
+
+    std::string payload = "{" 
+        "\"newKey\": \"" + new_key + "\", "
+        "\"required\": " + (required ? "true" : "false") + ", "
+        "\"min\": " + (min == 0.0 ? "null" : std::to_string(min)) + ", "
+        "\"max\": " + (max == 0.0 ? "null" : std::to_string(max)) + ", "
+        "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", "
+        "\"array\": false"
+        "}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating Float attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 std::string Databases::listAttributes(const std::string& databaseId, const std::string& collectionId){
     Validator::validateDatabaseParams(databaseId, collectionId);
     
