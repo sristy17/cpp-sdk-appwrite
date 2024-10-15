@@ -343,3 +343,21 @@ std::string Databases::createFloatAttribute(const std::string& databaseId, const
         throw AppwriteException("Error creating Float attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
+
+std::string Databases::listAttributes(const std::string& databaseId, const std::string& collectionId){
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching attributes. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
