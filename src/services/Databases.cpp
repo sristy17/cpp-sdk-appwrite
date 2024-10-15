@@ -358,6 +358,36 @@ std::string Databases::createEnumAttribute(const std::string& databaseId, const 
     }
 }
 
+std::string Databases::updateEnumAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements, std::string& new_key) {
+  
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/enum/" + attributeId;
+
+    std::string elementsStr = elements.empty() ? "null" : "[";
+    for (size_t i = 0; i < elements.size(); ++i) {
+        elementsStr += "\"" + elements[i] + "\"";
+        if (i < elements.size() - 1) {
+            elementsStr += ",";
+        }
+    }
+    if (!elements.empty()) elementsStr += "]";
+
+    std::string payload = "{\"newKey\": \"" + new_key + "\", \"elements\": " + elementsStr + ", \"required\": " + (required ? "true" : "false") +  ", \"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", \"array\": false}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating enum attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 std::string Databases::createFloatAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, double min, double max, const std::string& defaultValue) {
     Validator::validateDatabaseParams(databaseId, collectionId);
     

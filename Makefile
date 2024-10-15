@@ -84,6 +84,8 @@ updateBooleanAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/up
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateBooleanAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateBooleanAttribute.cpp $(LDFLAGS)
 updateEmailAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateEmailAttribute.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateEmailAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateEmailAttribute.cpp $(LDFLAGS)
+updateEnumAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateEnumAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/updateEnumAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateEnumAttribute.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*
