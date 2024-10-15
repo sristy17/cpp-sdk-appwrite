@@ -25,8 +25,11 @@ Works around with Databases in Appwrite
 
 | Method Name | Usage                                                                                          | Link                                                   |
 |-------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------|
+| `listAttributes()`  | List all Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/listAttributes.cpp) |
 | `createBooleanAttribute()`  | Creates Boolean Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createBooleanAttribute.cpp) |
+| `updateBooleanAttribute()`  | Updates Boolean Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateBooleanAttribute.cpp) |
 | `createEmailAttribute()`  | Creates Email Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createEmailAttribute.cpp) |
+| `updateEmailAttribute()`  | Updates Email Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateEmailAttribute.cpp) |
 | `createEnumAttribute()`  | Creates Enum Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createEnumAttribute.cpp) |
 | `createFloatAttribute()`  | Creates Float Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createFloatAttribute.cpp) |
 
