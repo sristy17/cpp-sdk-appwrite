@@ -105,6 +105,8 @@ updateFloatAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/upda
 # Storage
 createBucket: $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/createBucket $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp $(LDFLAGS)
+listBuckets: $(SRCS) $(EXAMPLES_DIR)/storage/listBuckets.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/listBuckets $(SRCS) $(EXAMPLES_DIR)/storage/listBuckets.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*

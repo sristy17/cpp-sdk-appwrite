@@ -9,6 +9,7 @@
 class Storage {
 public:
     void setup(const std::string& apiKey, const std::string& projectId);
+    std::string listBuckets();
     std::string create(const std::string& bucketId, const std::string& name);
 
 private:
