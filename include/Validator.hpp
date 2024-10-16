@@ -12,7 +12,7 @@ public:
     static void validateAccountParams(const std::string& email, const std::string& password, const std::string& userId);
     static void validateAccountParams(const std::string& email, const std::string& password);
     static void validateDatabaseParams(const std::string& databaseId, const std::string& name);
-    
+    static void validateStorageParams(const std::string& bucketId, const std::string& name);
 };
 
 #endif

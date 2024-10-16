@@ -11,3 +11,7 @@ Account& Appwrite::getAccount() {
 Databases& Appwrite::getDatabases() {
     return databases;
 }
+
+Storage& Appwrite::getStorage() {
+    return storage;
+}

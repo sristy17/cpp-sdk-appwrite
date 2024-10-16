@@ -10,6 +10,7 @@ SRCS = \
     $(SRC_DIR)/Appwrite.cpp \
     $(SRC_DIR)/services/Account.cpp \
     $(SRC_DIR)/services/Databases.cpp \
+    $(SRC_DIR)/services/Storage.cpp \
     $(SRC_DIR)/Utils.cpp \
     $(SRC_DIR)/Validator.cpp \
 
@@ -22,6 +23,17 @@ BINS = \
     listDatabase \
     createCollection \
     createDocument \
+	listCollection \
+	getCollection \
+	updateCollection \
+	deleteCollection \
+	createBooleanAttribute \
+	createEmailAttribute \
+	createEnumAttribute \
+	createFloatAttribute \
+	listAttributes \
+	updateBooleanAttribute \
+	updateEmailAttribute \
 
 # build all binaries
 all: $(BINS)
@@ -84,6 +96,11 @@ updateBooleanAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/up
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateBooleanAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateBooleanAttribute.cpp $(LDFLAGS)
 updateEmailAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateEmailAttribute.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateEmailAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateEmailAttribute.cpp $(LDFLAGS)
+
+
+# Storage
+createBucket: $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/createBucket $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*
