@@ -1,6 +1,7 @@
 #include <iostream>
 #include "classes/Storage.hpp"
 #include "Validator.hpp"
+#include <json.hpp>
 #include "Utils.hpp"
 #include "config/Config.hpp"
 #include "enums/HttpStatus.hpp"
@@ -11,15 +12,30 @@ void Storage::setup(const std::string &apiKey, const std::string &projectId) {
     this->projectId = projectId;
 }
 
-std::string Storage::create(const std::string& bucketId, const std::string& name){
+std::string Storage::create(const std::string& bucketId, const std::string& name,
+                             const std::vector<std::string>& permissions,
+                             bool fileSecurity, bool enabled,
+                             int maximumFileSize, const std::vector<std::string>& allowedFileExtensions,
+                             const std::string& compression, bool encryption,
+                             bool antivirus){
     Validator::validateStorageParams(bucketId, name);
 
     std::string url = Config::API_BASE_URL + "/storage/buckets";
 
-    std::string payload = "{\"bucketId\": \"" + bucketId +
-                          "\", \"name\": \"" + name +
-                          "\"}";
+    json payloadJson = {
+            {"bucketId", bucketId},
+            {"name", name},
+            {"permissions", permissions},
+            {"fileSecurity", fileSecurity},
+            {"enabled", enabled},
+            {"maximumFileSize", maximumFileSize},
+            {"allowedFileExtensions", allowedFileExtensions},
+            {"compression", compression},
+            {"encryption", encryption},
+            {"antivirus", antivirus}
+        };
 
+    std::string payload = payloadJson.dump();
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);
 
