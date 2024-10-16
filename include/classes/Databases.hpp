@@ -35,7 +35,8 @@ public:
 
     std::string updateBooleanAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool defaultValue, bool required, const std::string& new_key);
     std::string updateEmailAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, std::string& new_key);
-
+    std::string updateEnumAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements, std::string& new_key);
+    std::string updateFloatAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, double min, double max, const std::string& defaultValue, std::string& new_key);
     // docs
     std::string createDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data);
 
