@@ -34,6 +34,9 @@ Works around with Databases in Appwrite
 | `updateEnumAttribute()`  | Updates Enum Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateEnumAttribute.cpp) |
 | `createFloatAttribute()`  | Creates Float Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createFloatAttribute.cpp) |
 | `updateFloatAttribute()`  | Updates Float Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateFloatAttribute.cpp) |
+| `createIntegerAttribute()`  | Create Integer Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createIntegerAttribute.cpp) |
+| `updateIntegerAttribute()`  | Update Integer Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateIntegerAttribute.cpp) |
+
 
 ### Documents
 
