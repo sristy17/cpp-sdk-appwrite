@@ -103,6 +103,8 @@ updateEnumAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updat
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateEnumAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateEnumAttribute.cpp $(LDFLAGS)
 updateFloatAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateFloatAttribute.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateFloatAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateFloatAttribute.cpp $(LDFLAGS)
+updateIntegerAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateIntegerAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/updateIntegerAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateIntegerAttribute.cpp $(LDFLAGS)
 
 
 # Storage

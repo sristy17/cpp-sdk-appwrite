@@ -465,7 +465,34 @@ std::string Databases::createIntegerAttribute(const std::string& databaseId, con
     if (statusCode == HttpStatus::ATTRIBUTE_CREATED) {
         return response;
     } else {
-        throw AppwriteException("Error creating Float attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+        throw AppwriteException("Error creating Integer attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::updateIntegerAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, int min, int max, const std::string& defaultValue, std::string& new_key) {
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/integer/" + attributeId;
+
+    std::string payload = "{" 
+        "\"newKey\": \"" + new_key + "\", "
+        "\"required\": " + (required ? "true" : "false") + ", "
+        "\"min\": " + std::to_string(min) + ", " 
+        "\"max\": " + std::to_string(max) + ", " 
+        "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", "
+        "\"array\": false"
+        "}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating Integer attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
 
