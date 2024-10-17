@@ -100,6 +100,8 @@ updateIntegerAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/up
 # Storage
 createBucket: $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/createBucket $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp $(LDFLAGS)
+updateBucket: $(SRCS) $(EXAMPLES_DIR)/storage/updateBucket.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/updateBucket $(SRCS) $(EXAMPLES_DIR)/storage/updateBucket.cpp $(LDFLAGS)
 listBuckets: $(SRCS) $(EXAMPLES_DIR)/storage/listBuckets.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/listBuckets $(SRCS) $(EXAMPLES_DIR)/storage/listBuckets.cpp $(LDFLAGS)
 getBucket: $(SRCS) $(EXAMPLES_DIR)/storage/getBucket.cpp
