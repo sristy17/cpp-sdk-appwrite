@@ -496,6 +496,31 @@ std::string Databases::updateIntegerAttribute(const std::string& databaseId, con
     }
 }
 
+std::string Databases::createIPaddressAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue) {
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/ip";
+
+    std::string payload = "{" 
+        "\"key\": " + (attributeId.empty() ? "null" : "\"" + attributeId + "\"") + ", "
+        "\"required\": " + (required ? "true" : "false") + ", "
+        "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", "
+        "\"array\": false"
+        "}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::ATTRIBUTE_CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating IP Address attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 std::string Databases::listAttributes(const std::string& databaseId, const std::string& collectionId){
     Validator::validateDatabaseParams(databaseId, collectionId);
     
