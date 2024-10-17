@@ -41,20 +41,16 @@ all: $(BINS)
 # Account 
 createAccount: $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createAccount $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp $(LDFLAGS)
-
 createSession: $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp
 	$(CXX) $(CXXFLAGS) -o tests/createSession $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp $(LDFLAGS)
 
 # Database
 createDatabase: $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/database/createDatabase $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp $(LDFLAGS)
-
 updateDatabase: $(SRCS) $(EXAMPLES_DIR)/database/updateDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/database/updateDatabase $(SRCS) $(EXAMPLES_DIR)/database/updateDatabase.cpp $(LDFLAGS)
-
 getDatabase: $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/database/getDatabase $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp $(LDFLAGS)
-
 listDatabase: $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/database/listDatabase $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp $(LDFLAGS)
 
@@ -62,17 +58,12 @@ listDatabase: $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp
 # Database - Collection
 listCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/listCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/collection/listCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/listCollection.cpp $(LDFLAGS)
-
 createCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/createCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/collection/createCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/createCollection.cpp $(LDFLAGS)
-
 getCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/getCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/collection/getCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/getCollection.cpp $(LDFLAGS)
-
 updateCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/updateCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/collection/updateCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/updateCollection.cpp $(LDFLAGS)
-
-
 deleteCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/deleteCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/collection/deleteCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/deleteCollection.cpp $(LDFLAGS)
 
@@ -83,7 +74,6 @@ createDocument: $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp
 #Collection-Attribute
 listAttributes: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/listAttributes.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/listAttributes $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/listAttributes.cpp $(LDFLAGS)
-
 createBooleanAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createBooleanAttribute.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/createBooleanAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createBooleanAttribute.cpp $(LDFLAGS)
 createEmailAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createEmailAttribute.cpp
@@ -112,6 +102,8 @@ createBucket: $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/createBucket $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp $(LDFLAGS)
 listBuckets: $(SRCS) $(EXAMPLES_DIR)/storage/listBuckets.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/listBuckets $(SRCS) $(EXAMPLES_DIR)/storage/listBuckets.cpp $(LDFLAGS)
+getBucket: $(SRCS) $(EXAMPLES_DIR)/storage/getBucket.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/getBucket $(SRCS) $(EXAMPLES_DIR)/storage/getBucket.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*

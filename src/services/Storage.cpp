@@ -70,3 +70,24 @@ std::string Storage::listBuckets() {
         throw AppwriteException("Error fetching buckets. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
+
+std::string Storage::getBucket(std::string &bucketId){
+
+    Validator::validateStorageParams(bucketId);
+    
+    std::string url = Config::API_BASE_URL + "/storage/buckets/" + bucketId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching bucket. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}

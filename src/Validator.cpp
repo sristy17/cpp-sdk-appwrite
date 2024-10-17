@@ -55,3 +55,12 @@ void Validator::validateStorageParams(const std::string& bucketId, const std::st
         throw std::invalid_argument("Bucket Name is required field.");
     }
 }
+
+void Validator::validateStorageParams(const std::string& bucketId){
+    std::regex bucketIdPattern("^[a-zA-Z0-9][a-zA-Z0-9._-]{0,35}$");
+
+    if (!std::regex_match(bucketId, bucketIdPattern)) {
+        throw std::invalid_argument("Invalid bucketId. Must start with an alphanumeric character and can contain only alphanumeric characters, periods, hyphens, and underscores, with a max length of 36 characters.");
+    }
+
+}
