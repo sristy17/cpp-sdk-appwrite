@@ -114,6 +114,8 @@ deleteBucket: $(SRCS) $(EXAMPLES_DIR)/storage/deleteBucket.cpp
 # Storage - Files
 getFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/getFile.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/files/getFile $(SRCS) $(EXAMPLES_DIR)/storage/files/getFile.cpp $(LDFLAGS)
+getFileView: $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileView.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/files/getFileView $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileView.cpp $(LDFLAGS)
 updateFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/updateFile.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/files/updateFile $(SRCS) $(EXAMPLES_DIR)/storage/files/updateFile.cpp $(LDFLAGS)
 deleteFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/deleteFile.cpp

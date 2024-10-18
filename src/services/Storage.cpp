@@ -170,6 +170,26 @@ std::string Storage::getFile(const std::string &bucketId, const std::string &fil
     }
 }
 
+std::string Storage::getFileView(const std::string &bucketId, const std::string &fileId) {
+    Validator::validateStorageParams(bucketId);
+
+    std::string url = Config::API_BASE_URL + "/storage/buckets/" + bucketId + "/files/" + fileId + "/view";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching file. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 std::string Storage::getFileDownload(const std::string &bucketId, const std::string &fileId) {
     Validator::validateStorageParams(bucketId);
 
