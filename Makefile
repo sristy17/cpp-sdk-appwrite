@@ -108,6 +108,18 @@ listBuckets: $(SRCS) $(EXAMPLES_DIR)/storage/listBuckets.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/listBuckets $(SRCS) $(EXAMPLES_DIR)/storage/listBuckets.cpp $(LDFLAGS)
 getBucket: $(SRCS) $(EXAMPLES_DIR)/storage/getBucket.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/getBucket $(SRCS) $(EXAMPLES_DIR)/storage/getBucket.cpp $(LDFLAGS)
+deleteBucket: $(SRCS) $(EXAMPLES_DIR)/storage/deleteBucket.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/deleteBucket $(SRCS) $(EXAMPLES_DIR)/storage/deleteBucket.cpp $(LDFLAGS)
+
+# Storage - Files
+getFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/getFile.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/files/getFile $(SRCS) $(EXAMPLES_DIR)/storage/files/getFile.cpp $(LDFLAGS)
+updateFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/updateFile.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/files/updateFile $(SRCS) $(EXAMPLES_DIR)/storage/files/updateFile.cpp $(LDFLAGS)
+deleteFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/deleteFile.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/files/deleteFile $(SRCS) $(EXAMPLES_DIR)/storage/files/deleteFile.cpp $(LDFLAGS)
+getFileDownload: $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileDownload.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/files/getFileDownload $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileDownload.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*

@@ -128,3 +128,110 @@ std::string Storage::getBucket(std::string &bucketId){
         throw AppwriteException("Error fetching bucket. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
+
+std::string Storage::deleteBucket(std::string &bucketId) {
+    
+    Validator::validateStorageParams(bucketId);
+
+    std::string url = Config::API_BASE_URL + "/storage/buckets/" + bucketId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::deleteRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::DELETED) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error deleting bucket. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Storage::getFile(const std::string &bucketId, const std::string &fileId) {
+    Validator::validateStorageParams(bucketId);
+
+    std::string url = Config::API_BASE_URL + "/storage/buckets/" + bucketId + "/files/" + fileId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching file. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Storage::getFileDownload(const std::string &bucketId, const std::string &fileId) {
+    Validator::validateStorageParams(bucketId);
+
+    std::string url = Config::API_BASE_URL + "/storage/buckets/" + bucketId + "/files/" + fileId + "/download";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching file. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Storage::deleteFile(const std::string &bucketId, const std::string &fileId) {
+    Validator::validateStorageParams(bucketId);
+
+    std::string url = Config::API_BASE_URL + "/storage/buckets/" + bucketId + "/files/" + fileId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::deleteRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::DELETED) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching file. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Storage::updateFile(const std::string &bucketId, const std::string &fileId, const std::string &name, const std::vector<std::string> &permissions){
+    Validator::validateStorageParams(bucketId, name);
+
+    std::string url = Config::API_BASE_URL + "/storage/buckets/" + bucketId + "/files/" + fileId;
+
+    json payloadJson = {
+            {"name", name},
+            {"permissions", permissions}
+        };
+
+    std::string payload = payloadJson.dump();
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::putRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error updating file. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
