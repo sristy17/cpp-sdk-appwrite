@@ -521,6 +521,45 @@ std::string Databases::createIPaddressAttribute(const std::string& databaseId, c
     }
 }
 
+std::string Databases::createStringAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements, int size) {
+   
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/string";
+
+    std::string elementsStr = elements.empty() ? "null" : "[";
+    for (size_t i = 0; i < elements.size(); ++i) {
+        elementsStr += "\"" + elements[i] + "\"";
+        if (i < elements.size() - 1) {
+            elementsStr += ",";
+        }
+    }
+    if (!elements.empty()) elementsStr += "]";
+
+  std::string payload = "{" 
+    "\"key\": \"" + attributeId + "\", "
+    "\"elements\": " + elementsStr + ", "
+    "\"required\": " + (required ? "true" : "false") + ", "
+    "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", "
+    "\"array\": " + (elements.empty() ? "false" : "true") + ", "
+    "\"size\": " + std::to_string(size) + " "
+"}";
+
+    std::cout << "Payload: " << payload << std::endl; 
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::ATTRIBUTE_CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating String attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 std::string Databases::listAttributes(const std::string& databaseId, const std::string& collectionId){
     Validator::validateDatabaseParams(databaseId, collectionId);
     

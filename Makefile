@@ -86,6 +86,8 @@ createIntegerAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/cr
 	$(CXX) $(CXXFLAGS) -o tests/attribute/createIntegerAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createIntegerAttribute.cpp $(LDFLAGS)
 createIPaddressAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createIPaddressAttribute.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/createIPaddressAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createIPaddressAttribute.cpp $(LDFLAGS)
+createStringAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createStringAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/createStringAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/createStringAttribute.cpp $(LDFLAGS)
 
 updateBooleanAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateBooleanAttribute.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateBooleanAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateBooleanAttribute.cpp $(LDFLAGS)
@@ -114,8 +116,6 @@ deleteBucket: $(SRCS) $(EXAMPLES_DIR)/storage/deleteBucket.cpp
 # Storage - Files
 getFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/getFile.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/files/getFile $(SRCS) $(EXAMPLES_DIR)/storage/files/getFile.cpp $(LDFLAGS)
-getFileView: $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileView.cpp
-	$(CXX) $(CXXFLAGS) -o tests/storage/files/getFileView $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileView.cpp $(LDFLAGS)
 updateFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/updateFile.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/files/updateFile $(SRCS) $(EXAMPLES_DIR)/storage/files/updateFile.cpp $(LDFLAGS)
 deleteFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/deleteFile.cpp
