@@ -15,3 +15,7 @@ Databases& Appwrite::getDatabases() {
 Storage& Appwrite::getStorage() {
     return storage;
 }
+
+Health& Appwrite::getHealth() {
+    return health;
+}

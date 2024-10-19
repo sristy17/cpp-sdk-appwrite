@@ -11,6 +11,7 @@ SRCS = \
     $(SRC_DIR)/services/Account.cpp \
     $(SRC_DIR)/services/Databases.cpp \
     $(SRC_DIR)/services/Storage.cpp \
+    $(SRC_DIR)/services/Health.cpp \
     $(SRC_DIR)/Utils.cpp \
     $(SRC_DIR)/Validator.cpp \
 
@@ -122,6 +123,10 @@ deleteFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/deleteFile.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/files/deleteFile $(SRCS) $(EXAMPLES_DIR)/storage/files/deleteFile.cpp $(LDFLAGS)
 getFileDownload: $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileDownload.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/files/getFileDownload $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileDownload.cpp $(LDFLAGS)
+
+# Health
+getHealth: $(SRCS) $(EXAMPLES_DIR)/health/getHealth.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getHealth $(SRCS) $(EXAMPLES_DIR)/health/getHealth.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*
