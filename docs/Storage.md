@@ -15,7 +15,6 @@ Works around with Storage Buckets and files in Appwrite
 
 | Method Name | Usage                                                                                          | Link                                                   |
 |-------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------|
-| `createFile()`  | Creates a new File in the Bucket in the Appwrite project.   | [Example](/examples/storage/files/createFile.cpp) |
 | `getFile()`  | Fetches the file from the bucket in the Appwrite project using the unique bucket ID.                    | [Example](/examples/storage/files/getFile.cpp) |
 | `getFileView()`  | Fetches the file from the bucket in the Appwrite project using the unique bucket ID.                    | [Example](/examples/storage/files/getFileView.cpp) |
 | `getFileDownload()`    | Retrieves a file buffer for download from the buckets in the Appwrite project.                                   | [Example](/examples/storage/files/getFileDownload.cpp)  |

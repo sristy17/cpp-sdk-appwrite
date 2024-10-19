@@ -15,6 +15,10 @@ public:
 
     // core
     std::string getHealth();
+    std::string getAntivirus();
+    std::string getCache();
+    std::string getDB();
+    std::string getPubSub();
     
 private:
     std::string apiKey;

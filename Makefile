@@ -127,6 +127,14 @@ getFileDownload: $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileDownload.cpp
 # Health
 getHealth: $(SRCS) $(EXAMPLES_DIR)/health/getHealth.cpp
 	$(CXX) $(CXXFLAGS) -o tests/health/getHealth $(SRCS) $(EXAMPLES_DIR)/health/getHealth.cpp $(LDFLAGS)
+getAntivirus: $(SRCS) $(EXAMPLES_DIR)/health/getAntivirus.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getAntivirus $(SRCS) $(EXAMPLES_DIR)/health/getAntivirus.cpp $(LDFLAGS)
+getCache: $(SRCS) $(EXAMPLES_DIR)/health/getCache.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getCache $(SRCS) $(EXAMPLES_DIR)/health/getCache.cpp $(LDFLAGS)
+getDB: $(SRCS) $(EXAMPLES_DIR)/health/getDB.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getDB $(SRCS) $(EXAMPLES_DIR)/health/getDB.cpp $(LDFLAGS)
+getPubSub: $(SRCS) $(EXAMPLES_DIR)/health/getPubSub.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getPubSub $(SRCS) $(EXAMPLES_DIR)/health/getPubSub.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*

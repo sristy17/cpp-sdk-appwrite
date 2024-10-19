@@ -11,7 +11,7 @@ int main() {
     health.setup(apiKey, projectId);
 
     try {
-        std::string response = health.getHealth();
+        std::string response = health.getAntivirus();
         std::cout << "Health Check Done! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
