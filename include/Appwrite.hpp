@@ -4,6 +4,7 @@
 #include "classes/Account.hpp"
 #include "classes/Databases.hpp"
 #include "classes/Storage.hpp"
+#include "classes/Health.hpp"
 
 class Appwrite {
 public:
@@ -11,12 +12,14 @@ public:
     Account& getAccount();
     Databases& getDatabases();
     Storage& getStorage();
+    Health& getHealth();
     
 private:
     std::string projectId;
     Account account;
     Databases databases;
     Storage storage;
+    Health health;
 };
 
 #endif
