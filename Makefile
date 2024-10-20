@@ -100,6 +100,10 @@ updateFloatAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/upda
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateFloatAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateFloatAttribute.cpp $(LDFLAGS)
 updateIntegerAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateIntegerAttribute.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateIntegerAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateIntegerAttribute.cpp $(LDFLAGS)
+updateIPaddressAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateIPaddressAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/updateIPaddressAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateIPaddressAttribute.cpp $(LDFLAGS)
+updateStringAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateStringAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/updateStringAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateStringAttribute.cpp $(LDFLAGS)
 
 
 # Storage
