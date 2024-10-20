@@ -527,7 +527,7 @@ std::string Databases::updateIPaddressAttribute(const std::string& databaseId, c
     std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/ip/" + attributeId;
 
     std::string payload = "{" 
-        "\"key\": \"" + new_key + "\", "
+        "\"newKey\": \"" + new_key + "\", "
         "\"required\": " + (required ? "true" : "false") + ", "
         "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", "
         "\"array\": false"
@@ -603,7 +603,7 @@ std::string Databases::updateStringAttribute( const std::string& databaseId, con
     if (!elements.empty()) elementsStr += "]";
 
     std::string payload = "{" 
-        "\"key\": \"" + new_key + "\", "  
+        "\"newKey\": \"" + new_key + "\", "  
         "\"elements\": " + elementsStr + ", "
         "\"required\": " + (required ? "true" : "false") + ", "
         "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", "
