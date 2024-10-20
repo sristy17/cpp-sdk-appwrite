@@ -521,6 +521,33 @@ std::string Databases::createIPaddressAttribute(const std::string& databaseId, c
     }
 }
 
+std::string Databases::updateIPaddressAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::string& new_key) {
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/ip/" + attributeId;
+
+    std::string payload = "{" 
+        "\"key\": \"" + new_key + "\", "
+        "\"required\": " + (required ? "true" : "false") + ", "
+        "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", "
+        "\"array\": false"
+        "}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json"); 
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating IPAddress attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+
 std::string Databases::createStringAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements, int size) {
    
     Validator::validateDatabaseParams(databaseId, collectionId);
@@ -557,6 +584,43 @@ std::string Databases::createStringAttribute(const std::string& databaseId, cons
         return response;
     } else {
         throw AppwriteException("Error creating String attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::updateStringAttribute( const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements, int size, std::string& new_key 
+) {
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/string/" + attributeId;
+
+    std::string elementsStr = elements.empty() ? "null" : "[";
+    for (size_t i = 0; i < elements.size(); ++i) {
+        elementsStr += "\"" + elements[i] + "\"";
+        if (i < elements.size() - 1) {
+            elementsStr += ",";
+        }
+    }
+    if (!elements.empty()) elementsStr += "]";
+
+    std::string payload = "{" 
+        "\"key\": \"" + new_key + "\", "  
+        "\"elements\": " + elementsStr + ", "
+        "\"required\": " + (required ? "true" : "false") + ", "
+        "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", "
+        "\"array\": " + (elements.empty() ? "false" : "true") + ", "
+        "\"size\": " + std::to_string(size) + 
+    "}";
+
+   std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating Integer attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
 
