@@ -73,6 +73,10 @@ createDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/createDocum
 	$(CXX) $(CXXFLAGS) -o tests/document/createDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/createDocument.cpp $(LDFLAGS)
 listDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/listDocument.cpp
 	$(CXX) $(CXXFLAGS) -o tests/document/listDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/listDocument.cpp $(LDFLAGS)
+deleteDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/deleteDocument.cpp
+	$(CXX) $(CXXFLAGS) -o tests/document/deleteDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/deleteDocument.cpp $(LDFLAGS)
+getDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/getDocument.cpp
+	$(CXX) $(CXXFLAGS) -o tests/document/getDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/getDocument.cpp $(LDFLAGS)
 
 #Collection-Attribute
 listAttributes: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/listAttributes.cpp
