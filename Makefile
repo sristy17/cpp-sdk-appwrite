@@ -71,6 +71,8 @@ deleteCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/deleteCollection.c
 # Database-Collection-Document
 createDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/createDocument.cpp
 	$(CXX) $(CXXFLAGS) -o tests/document/createDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/createDocument.cpp $(LDFLAGS)
+listDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/listDocument.cpp
+	$(CXX) $(CXXFLAGS) -o tests/document/listDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/listDocument.cpp $(LDFLAGS)
 
 #Collection-Attribute
 listAttributes: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/listAttributes.cpp
