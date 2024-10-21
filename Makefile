@@ -139,6 +139,24 @@ getDB: $(SRCS) $(EXAMPLES_DIR)/health/getDB.cpp
 	$(CXX) $(CXXFLAGS) -o tests/health/getDB $(SRCS) $(EXAMPLES_DIR)/health/getDB.cpp $(LDFLAGS)
 getPubSub: $(SRCS) $(EXAMPLES_DIR)/health/getPubSub.cpp
 	$(CXX) $(CXXFLAGS) -o tests/health/getPubSub $(SRCS) $(EXAMPLES_DIR)/health/getPubSub.cpp $(LDFLAGS)
+getStorage: $(SRCS) $(EXAMPLES_DIR)/health/getStorage.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getStorage $(SRCS) $(EXAMPLES_DIR)/health/getStorage.cpp $(LDFLAGS)
+getStorageLocal: $(SRCS) $(EXAMPLES_DIR)/health/getStorageLocal.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getStorageLocal $(SRCS) $(EXAMPLES_DIR)/health/getStorageLocal.cpp $(LDFLAGS)
+getTime: $(SRCS) $(EXAMPLES_DIR)/health/getTime.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getTime $(SRCS) $(EXAMPLES_DIR)/health/getTime.cpp $(LDFLAGS)
+getQueue: $(SRCS) $(EXAMPLES_DIR)/health/getQueue.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getQueue $(SRCS) $(EXAMPLES_DIR)/health/getQueue.cpp $(LDFLAGS)
+getCertificate: $(SRCS) $(EXAMPLES_DIR)/health/params/getCertificate.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getCertificate $(SRCS) $(EXAMPLES_DIR)/health/params/getCertificate.cpp $(LDFLAGS)
+getQueueBuilds: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueBuilds.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueBuilds $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueBuilds.cpp $(LDFLAGS)
+getQueueCertificates: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueCertificates.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueCertificates $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueCertificates.cpp $(LDFLAGS)
+getQueueUsageWebhooks: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageWebhooks.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueUsageWebhooks $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageWebhooks.cpp $(LDFLAGS)
+getQueueUsageDump: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageDump.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueUsageDump $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageDump.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*

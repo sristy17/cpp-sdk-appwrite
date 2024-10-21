@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <sstream>
+#include <iomanip>
 
 namespace Utils
 {
@@ -222,5 +224,20 @@ namespace Utils
         curl_easy_cleanup(curl);
 
         return static_cast<int>(httpCode);
+    }
+
+    std::string urlEncode(const std::string& value) {
+        std::ostringstream escaped;
+        escaped << std::hex << std::setfill('0');
+        
+        for (char c : value) {
+            if (isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~') {
+                escaped << c;
+            } else {
+                escaped << '%' << std::setw(2) << (static_cast<int>(c) & 0xFF);
+            }
+        }
+        
+        return escaped.str();
     }
 }
