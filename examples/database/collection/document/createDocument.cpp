@@ -7,13 +7,16 @@ int main()
     std::string projectId = "66fbb5a100070a3a1d19";
     std::string apiKey = "";
     std::string databaseId = "database123";
-    std::string collectionId = "collectioasdgfdsn123";
-    std::string documentId = "documesdgasgnt123";
+    std::string collectionId = "test1234";
+    std::string documentId = "document123";
     json data = {
-        {"name", "Pooranjoy"},
-        {"email", "pooranjoyb@example.com"},
-        {"age", 22}
-        };
+        {"new_email_attribute", "pou@email.com"},  
+        {"new_enum_attribute", {"element1234"}},
+        {"UpdatedFloat123", 9},
+        {"UpdatedInteger123", 123},
+        {"UpdatedIPaddress123", "192.168.1.1"},
+        {"UpdatedString123", {"abc", "def"}} 
+    };
 
     Appwrite appwrite(projectId);
     Databases &databases = appwrite.getDatabases();

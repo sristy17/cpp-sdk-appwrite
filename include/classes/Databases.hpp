@@ -44,7 +44,7 @@ public:
     std::string updateIPaddressAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::string& new_key);
     std::string updateStringAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements, int size, std::string& new_key);
  
-    // docs
+    // document
     std::string createDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data);
 
 private:
