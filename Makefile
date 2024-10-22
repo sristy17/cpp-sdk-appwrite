@@ -170,6 +170,14 @@ getQueueUsageWebhooks: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageWebhoo
 	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueUsageWebhooks $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageWebhooks.cpp $(LDFLAGS)
 getQueueUsageDump: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageDump.cpp
 	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueUsageDump $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageDump.cpp $(LDFLAGS)
+getQueueFunctions: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueFunctions.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueFunctions $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueFunctions.cpp $(LDFLAGS)
+getQueueMails: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMails.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueMails $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMails.cpp $(LDFLAGS)
+getQueueMessaging: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMessaging.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueMessaging $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMessaging.cpp $(LDFLAGS)
+getQueueMigrations: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueMigrations $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*

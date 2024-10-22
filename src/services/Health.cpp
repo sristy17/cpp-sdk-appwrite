@@ -171,7 +171,7 @@ std::string Health::getQueue(){
         return response;
     }
     else {
-        throw AppwriteException("Error fetching time. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+        throw AppwriteException("Error fetching queue. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
 
@@ -192,7 +192,7 @@ std::string Health::getCertificate(const std::string& domain){
         return response;
     }
     else {
-        throw AppwriteException("Error fetching time. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+        throw AppwriteException("Error fetching certificates. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
 
@@ -213,7 +213,7 @@ std::string Health::getQueueBuilds(const std::string& threshold){
         return response;
     }
     else {
-        throw AppwriteException("Error fetching time. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+        throw AppwriteException("Error fetching queue builds. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
 
@@ -234,7 +234,7 @@ std::string Health::getQueueCertificates(const std::string& threshold){
         return response;
     }
     else {
-        throw AppwriteException("Error fetching time. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+        throw AppwriteException("Error fetching queue certificate. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
 
@@ -255,7 +255,7 @@ std::string Health::getQueueUsageWebhooks(const std::string& threshold){
         return response;
     }
     else {
-        throw AppwriteException("Error fetching time. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+        throw AppwriteException("Error fetching webhook usage. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
 
@@ -276,7 +276,91 @@ std::string Health::getQueueUsageDump(const std::string& threshold){
         return response;
     }
     else {
-        throw AppwriteException("Error fetching time. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+        throw AppwriteException("Error fetching usage-dump. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Health::getQueueMails(const std::string& threshold){
+    std::string url = Config::API_BASE_URL + "/health/queue/mails";
+
+    std::string queryString = "threshold=" + Utils::urlEncode(threshold);
+    url += "?" + queryString;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching mails. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Health::getQueueMessaging(const std::string& threshold){
+    std::string url = Config::API_BASE_URL + "/health/queue/messaging";
+
+    std::string queryString = "threshold=" + Utils::urlEncode(threshold);
+    url += "?" + queryString;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching messages from queues. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Health::getQueueMigrations(const std::string& threshold){
+    std::string url = Config::API_BASE_URL + "/health/queue/migrations";
+
+    std::string queryString = "threshold=" + Utils::urlEncode(threshold);
+    url += "?" + queryString;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching migration queues. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Health::getQueueFunctions(const std::string& threshold){
+    std::string url = Config::API_BASE_URL + "/health/queue/functions";
+
+    std::string queryString = "threshold=" + Utils::urlEncode(threshold);
+    url += "?" + queryString;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching function queues. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
 

@@ -21,8 +21,12 @@ public:
     std::string getTime();
     std::string getQueue();
     std::string getCertificate(const std::string& domain = "");
+    std::string getQueueMails(const std::string& domain = "");
     std::string getQueueCertificates(const std::string& threshold = "");
     std::string getQueueBuilds(const std::string& threshold = "");
+    std::string getQueueMessaging(const std::string& threshold = "");
+    std::string getQueueMigrations(const std::string& threshold = "");
+    std::string getQueueFunctions(const std::string& threshold = "");
     std::string getQueueUsageWebhooks(const std::string& threshold = "");
     std::string getQueueUsageDump(const std::string& threshold = "");
 
