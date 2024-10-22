@@ -50,6 +50,11 @@ public:
     std::string deleteDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId);
     std::string getDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId);
 
+    //indexes
+    std::string listIndexes(const std::string& databaseId, const std::string& collectionId);
+    std::string createIndex(const std::string& databaseId, const std::string& collectionId, const std::string& key, const std::string& type, const std::vector<std::string> &attributes);
+
+
 private:
     std::string apiKey;
     std::string projectId;

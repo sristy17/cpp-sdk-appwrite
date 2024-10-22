@@ -701,3 +701,54 @@ std::string Databases::getDocument(const std::string& databaseId, const std::str
     }
 
 }
+
+std::string Databases::listIndexes(const std::string& databaseId, const std::string& collectionId){
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/indexes";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching indexes. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::createIndex(const std::string& databaseId, const std::string& collectionId, const std::string& key, const std::string& type, const std::vector<std::string> &attributes){
+    if (databaseId.empty()) {
+        throw AppwriteException("Missing required parameter: 'databaseId'");
+    }
+    if (collectionId.empty()) {
+        throw AppwriteException("Missing required parameter: 'collectionId'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/indexes";
+
+    json payloadJson = {
+        {"databaseId", databaseId},
+        {"collectionId", collectionId},
+        {"key", key},
+        {"type", type},
+        {"attributes", attributes}
+    };
+
+    std::string payload = payloadJson.dump();
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    
+    std::string response;
+
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::INDEX_CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating index. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}

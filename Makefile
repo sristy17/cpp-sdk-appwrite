@@ -111,6 +111,13 @@ updateIPaddressAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/
 updateStringAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateStringAttribute.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateStringAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateStringAttribute.cpp $(LDFLAGS)
 
+# Collection-Indexes
+listIndexes: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/listIndexes.cpp
+	$(CXX) $(CXXFLAGS) -o tests/indexes/listIndexes $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/listIndexes.cpp $(LDFLAGS)
+createIndex: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/createIndex.cpp
+	$(CXX) $(CXXFLAGS) -o tests/indexes/createIndex $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/createIndex.cpp $(LDFLAGS)
+
+
 
 # Storage
 createBucket: $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp
