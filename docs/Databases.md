@@ -47,6 +47,8 @@ Works around with Databases in Appwrite
 |-------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------|
 | `listIndexes()`  | List all Indexes from the Collection in the database in the Appwrite project   | [Example](/examples/database/collection/indexes/listIndexes.cpp) |
 | `createIndex()`  | Create Indexes in the Collection in the Appwrite project   | [Example](/examples/database/collection/indexes/createIndex.cpp) |
+| `getIndex()`  | Fetch Indexes in the Collection in the Appwrite project   | [Example](/examples/database/collection/indexes/getIndex.cpp) |
+| `deleteIndex()`  | Delete Indexes in the Collection in the Appwrite project   | [Example](/examples/database/collection/indexes/deleteIndex.cpp) |
 
 ### Documents
 
