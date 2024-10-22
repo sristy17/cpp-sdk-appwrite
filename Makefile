@@ -116,8 +116,10 @@ listIndexes: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/listIndexes.cpp
 	$(CXX) $(CXXFLAGS) -o tests/indexes/listIndexes $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/listIndexes.cpp $(LDFLAGS)
 createIndex: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/createIndex.cpp
 	$(CXX) $(CXXFLAGS) -o tests/indexes/createIndex $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/createIndex.cpp $(LDFLAGS)
-
-
+deleteIndex: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/deleteIndex.cpp
+	$(CXX) $(CXXFLAGS) -o tests/indexes/deleteIndex $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/deleteIndex.cpp $(LDFLAGS)
+getIndex: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/getIndex.cpp
+	$(CXX) $(CXXFLAGS) -o tests/indexes/getIndex $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/getIndex.cpp $(LDFLAGS)
 
 # Storage
 createBucket: $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp

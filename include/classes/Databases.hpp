@@ -52,8 +52,9 @@ public:
 
     //indexes
     std::string listIndexes(const std::string& databaseId, const std::string& collectionId);
-    std::string createIndex(const std::string& databaseId, const std::string& collectionId, const std::string& key, const std::string& type, const std::vector<std::string> &attributes);
-
+    std::string createIndexes(const std::string& databaseId, const std::string& collectionId, const std::string& key, const std::string& type, const std::vector<std::string> &attributes);
+    std::string deleteIndexes(const std::string& databaseId, const std::string& collectionId, const std::string& key);
+    std::string getIndexes(const std::string& databaseId, const std::string& collectionId, const std::string& key);
 
 private:
     std::string apiKey;
