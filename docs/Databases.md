@@ -41,6 +41,13 @@ Works around with Databases in Appwrite
 | `createStringAttribute()`  | Create String Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createStringAttribute.cpp) |
 | `updateStringAttribute()`  | Update String Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateStringAttribute.cpp) |
 
+### Indexes
+
+| Method Name | Usage                                                                                          | Link                                                   |
+|-------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------|
+| `listIndexes()`  | List all Indexes from the Collection in the database in the Appwrite project   | [Example](/examples/database/collection/indexes/listIndexes.cpp) |
+| `createIndex()`  | Create Indexes in the Collection in the Appwrite project   | [Example](/examples/database/collection/indexes/createIndex.cpp) |
+
 ### Documents
 
 | Method Name | Usage                                                                                          | Link                                                   |
