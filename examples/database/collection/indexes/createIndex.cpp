@@ -19,7 +19,7 @@ int main() {
     database.setup(apiKey, projectId);
 
     try {
-        std::string response = database.createIndex(
+        std::string response = database.createIndexes(
             databaseId, collectionId,key, type, attributes
         );
         std::cout << "Index created successfully! \nResponse: " << response << std::endl;
