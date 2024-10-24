@@ -9,6 +9,8 @@ Works around with Databases in Appwrite
 | `get()`  | Fetches the database from the Appwrite project using the unique database ID.                    | [Example](/examples/database/getDatabase.cpp) |
 | `list()`    | Retrieves a list of all databases in the Appwrite project.                                   | [Example](/examples/database/listDatabase.cpp)  |
 | `update()`    | Updates a databases details in the Appwrite project.                                   | [Example](/examples/database/updateDatabase.cpp)  |
+| `getDatabaseUsage()`    | Fetches databases Usage details in the Appwrite project.                                   | [Example](/examples/database/getDatabaseUsage.cpp)  |
+| `getCollectionUsage()`    | Fetches collection Usage  details in the Appwrite project.                                   | [Example](/examples/database/getCollectionUsage.cpp)  |
 
 
 ### Collections
