@@ -54,7 +54,10 @@ getDatabase: $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/database/getDatabase $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp $(LDFLAGS)
 listDatabase: $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/database/listDatabase $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp $(LDFLAGS)
-
+getDatabaseUsage: $(SRCS) $(EXAMPLES_DIR)/database/getDatabaseUsage.cpp
+	$(CXX) $(CXXFLAGS) -o tests/database/getDatabaseUsage $(SRCS) $(EXAMPLES_DIR)/database/getDatabaseUsage.cpp $(LDFLAGS)
+getCollectionUsage: $(SRCS) $(EXAMPLES_DIR)/database/getCollectionUsage.cpp
+	$(CXX) $(CXXFLAGS) -o tests/database/getCollectionUsage $(SRCS) $(EXAMPLES_DIR)/database/getCollectionUsage.cpp $(LDFLAGS)
 
 # Database - Collection
 listCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/listCollection.cpp

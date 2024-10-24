@@ -18,7 +18,10 @@ public:
     std::string get(const std::string& databaseId);
     std::string create(const std::string& databaseId, const std::string& name, bool enabled);
     std::string update(const std::string& databaseId, const std::string& name, bool enabled);
-
+    std::string getDatabaseUsage(const std::string& databaseId, const std::string& range);
+    std::string getCollectionUsage(const std::string& databaseId, const std::string& collectionId, const std::string& range);
+  
+ 
     // collections
     std::string listCollection();
     std::string createCollection(const std::string& databaseId, const std::string& collectionId, const std::string& name,  bool enabled);

@@ -794,3 +794,37 @@ std::string Databases::getIndexes(const std::string& databaseId, const std::stri
     }
 
 }
+
+std::string Databases::getDatabaseUsage(const std::string& databaseId, const std::string& range) {
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/usage?range=" + range;
+    std::cout << "Request URL: " << url << std::endl;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching database usage. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::getCollectionUsage(const std::string& databaseId, const std::string& collectionId, const std::string& range) {
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/usage?range=" + range;
+    std::cout << "Request URL: " << url << std::endl;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching collection usage. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
