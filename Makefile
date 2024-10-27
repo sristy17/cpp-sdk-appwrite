@@ -22,19 +22,63 @@ BINS = \
     updateDatabase \
     getDatabase \
     listDatabase \
-    createCollection \
-    createDocument \
+	getDatabaseUsage \
+	getCollectionUsage \
 	listCollection \
+    createCollection \
 	getCollection \
 	updateCollection \
 	deleteCollection \
+	createDocument \
+	listDocument \
+	getDocument \
+	deleteDocument \
+	listAttributes \
 	createBooleanAttribute \
 	createEmailAttribute \
 	createEnumAttribute \
 	createFloatAttribute \
-	listAttributes \
+	createIntegerAttribute \
+	createIPaddressAttribute \
+	createStringAttribute \
 	updateBooleanAttribute \
 	updateEmailAttribute \
+	updateEnumAttribute \
+	updateFloatAttribute \
+	updateIntegerAttribute \
+	updateIPaddressAttribute \
+	updateStringAttribute \
+	listIndexes \
+	createIndex \
+	deleteIndex \
+	getIndex \
+	createBucket \
+	updateBucket \
+	listBuckets \
+	getBucket \
+	deleteBucket \
+	getFile \
+	updateFile \
+	deleteFile \
+	getFileDownload \
+	getHealth \
+	getAntivirus \
+	getCache \
+	getDB \
+	getPubSub \
+	getStorage \
+	getStorageLocal \
+	getTime \
+	getQueue \
+	getCertificate \
+	getQueueBuilds \
+	getQueueCertificates \
+	getQueueUsageWebhooks \
+	getQueueUsageDump \
+	getQueueFunctions \
+	getQueueMails \
+	getQueueMessaging \
+	getQueueMigrations \
 
 # build all binaries
 all: $(BINS)
