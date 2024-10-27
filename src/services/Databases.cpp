@@ -102,21 +102,36 @@ std::string Databases::update(const std::string &databaseId, const std::string &
     }
 }
 
-//collection
-std::string Databases::listCollection(){
-    std::string url = Config::API_BASE_URL + "/databases";
+std::string Databases::getDatabaseUsage(const std::string& databaseId, const std::string& range) {
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/usage?range=" + range;
+    std::cout << "Request URL: " << url << std::endl;
 
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);
 
     std::string response;
-
     int statusCode = Utils::getRequest(url, headers, response);
 
     if (statusCode == HttpStatus::OK) {
         return response;
+    } else {
+        throw AppwriteException("Error fetching database usage. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
-    else {
+}
+
+//collection
+std::string Databases::listCollection(const std::string& databaseId) {
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
         throw AppwriteException("Error listing collections. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
@@ -205,6 +220,22 @@ std::string Databases::deleteCollection(const std::string& databaseId, const std
     }
 }
 
+std::string Databases::getCollectionUsage(const std::string& databaseId, const std::string& collectionId, const std::string& range) {
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/usage?range=" + range;
+    std::cout << "Request URL: " << url << std::endl;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching collection usage. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
 //attribute
 std::string Databases::createBooleanAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool defaultValue, bool required) {
     
@@ -793,38 +824,4 @@ std::string Databases::getIndexes(const std::string& databaseId, const std::stri
         throw AppwriteException("Error fetching index. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 
-}
-
-std::string Databases::getDatabaseUsage(const std::string& databaseId, const std::string& range) {
-    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/usage?range=" + range;
-    std::cout << "Request URL: " << url << std::endl;
-
-    std::vector<std::string> headers = Config::getHeaders(projectId);
-    headers.push_back("X-Appwrite-Key: " + apiKey);
-
-    std::string response;
-    int statusCode = Utils::getRequest(url, headers, response);
-
-    if (statusCode == HttpStatus::OK) {
-        return response;
-    } else {
-        throw AppwriteException("Error fetching database usage. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
-    }
-}
-
-std::string Databases::getCollectionUsage(const std::string& databaseId, const std::string& collectionId, const std::string& range) {
-    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/usage?range=" + range;
-    std::cout << "Request URL: " << url << std::endl;
-
-    std::vector<std::string> headers = Config::getHeaders(projectId);
-    headers.push_back("X-Appwrite-Key: " + apiKey);
-
-    std::string response;
-    int statusCode = Utils::getRequest(url, headers, response);
-
-    if (statusCode == HttpStatus::OK) {
-        return response;
-    } else {
-        throw AppwriteException("Error fetching collection usage. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
-    }
 }

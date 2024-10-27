@@ -23,7 +23,7 @@ public:
   
  
     // collections
-    std::string listCollection();
+    std::string listCollection(const std::string& databaseId);
     std::string createCollection(const std::string& databaseId, const std::string& collectionId, const std::string& name,  bool enabled);
     std::string getCollection(const std::string& databaseId, const std::string& collectionId);
     std::string updateCollection(const std::string& databaseId,const std::string& collectionId, const std::string& name, bool enabled);
