@@ -5,5 +5,5 @@ Works around with User Account in Appwrite
 
 | Method Name | Usage                                                                                          | Link                                                   |
 |-------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------|
-| `createAccount()`  | Creates an account in the Appwrite project.   | [Example](/examples/health/createAccount.cpp) |
-| `createSession()`  | Creates an session in the Appwrite project.   | [Example](/examples/health/createSession.cpp) |
+| `createAccount()`  | Creates an account in the Appwrite project.   | [Example](/examples/account/createAccount.cpp) |
+| `createSession()`  | Creates an session in the Appwrite project.   | [Example](/examples/account/createSession.cpp) |
