@@ -12,46 +12,6 @@ void Databases::setup(const std::string &apiKey, const std::string &projectId) {
     this->projectId = projectId;
 }
 
-std::string Databases::createDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data) {
-
-    if (databaseId.empty()) {
-        throw AppwriteException("Missing required parameter: 'databaseId'");
-    }
-    if (collectionId.empty()) {
-        throw AppwriteException("Missing required parameter: 'collectionId'");
-    }
-    if (documentId.empty()) {
-        throw AppwriteException("Missing required parameter: 'documentId'");
-    }
-    if (data.is_null()) {
-        throw AppwriteException("Missing required parameter: 'data'");
-    }
-
-    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/documents";
-
-    json payloadJson = {
-        {"databaseId", databaseId},
-        {"collectionId", collectionId},
-        {"documentId", documentId},
-        {"data", data}
-    };
-
-    std::string payload = payloadJson.dump();
-    std::vector<std::string> headers = Config::getHeaders(projectId);
-    headers.push_back("X-Appwrite-Key: " + apiKey);
-    
-    std::string response;
-    // std::cout << "Payload: " << payload << "\n";
-
-    int statusCode = Utils::postRequest(url, payload, headers, response);
-
-    if (statusCode == HttpStatus::CREATED) {
-        return response;
-    } else {
-        throw AppwriteException("Error creating document. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
-    }
-}
-
 //database
 std::string Databases::create(const std::string &databaseId, const std::string &name, bool enabled = false) {
 
@@ -521,6 +481,33 @@ std::string Databases::createIPaddressAttribute(const std::string& databaseId, c
     }
 }
 
+std::string Databases::updateIPaddressAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::string& new_key) {
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/ip/" + attributeId;
+
+    std::string payload = "{" 
+        "\"newKey\": \"" + new_key + "\", "
+        "\"required\": " + (required ? "true" : "false") + ", "
+        "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", "
+        "\"array\": false"
+        "}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json"); 
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating IPAddress attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+
 std::string Databases::createStringAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements, int size) {
    
     Validator::validateDatabaseParams(databaseId, collectionId);
@@ -560,6 +547,43 @@ std::string Databases::createStringAttribute(const std::string& databaseId, cons
     }
 }
 
+std::string Databases::updateStringAttribute( const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements, int size, std::string& new_key 
+) {
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/attributes/string/" + attributeId;
+
+    std::string elementsStr = elements.empty() ? "null" : "[";
+    for (size_t i = 0; i < elements.size(); ++i) {
+        elementsStr += "\"" + elements[i] + "\"";
+        if (i < elements.size() - 1) {
+            elementsStr += ",";
+        }
+    }
+    if (!elements.empty()) elementsStr += "]";
+
+    std::string payload = "{" 
+        "\"newKey\": \"" + new_key + "\", "  
+        "\"elements\": " + elementsStr + ", "
+        "\"required\": " + (required ? "true" : "false") + ", "
+        "\"default\": " + (defaultValue.empty() ? "null" : "\"" + defaultValue + "\"") + ", "
+        "\"array\": " + (elements.empty() ? "false" : "true") + ", "
+        "\"size\": " + std::to_string(size) + 
+    "}";
+
+   std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating Integer attribute. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 std::string Databases::listAttributes(const std::string& databaseId, const std::string& collectionId){
     Validator::validateDatabaseParams(databaseId, collectionId);
     
@@ -575,5 +599,232 @@ std::string Databases::listAttributes(const std::string& databaseId, const std::
         return response;
     } else {
         throw AppwriteException("Error fetching attributes. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+//document
+std::string Databases::createDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data) {
+
+    if (databaseId.empty()) {
+        throw AppwriteException("Missing required parameter: 'databaseId'");
+    }
+    if (collectionId.empty()) {
+        throw AppwriteException("Missing required parameter: 'collectionId'");
+    }
+    if (documentId.empty()) {
+        throw AppwriteException("Missing required parameter: 'documentId'");
+    }
+    if (data.is_null()) {
+        throw AppwriteException("Missing required parameter: 'data'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/documents";
+
+    json payloadJson = {
+        {"databaseId", databaseId},
+        {"collectionId", collectionId},
+        {"documentId", documentId},
+        {"data", data}
+    };
+
+    std::string payload = payloadJson.dump();
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    
+    std::string response;
+    // std::cout << "Payload: " << payload << "\n";
+
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating document. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::listDocument(const std::string& databaseId, const std::string& collectionId){
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/documents";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching documents. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::deleteDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId) {
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/documents/" + documentId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::deleteRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::DELETED) { 
+        return response; 
+    } else {
+        throw AppwriteException("Error deleting document. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::getDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId) {
+
+    if (databaseId.empty()) {
+        throw AppwriteException("Missing required parameter: 'documentId'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/documents/" + documentId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching document. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+
+}
+
+//idexes
+std::string Databases::listIndexes(const std::string& databaseId, const std::string& collectionId){
+    Validator::validateDatabaseParams(databaseId, collectionId);
+    
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/indexes";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching indexes. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::createIndexes(const std::string& databaseId, const std::string& collectionId, const std::string& key, const std::string& type, const std::vector<std::string> &attributes){
+    if (databaseId.empty()) {
+        throw AppwriteException("Missing required parameter: 'databaseId'");
+    }
+    if (collectionId.empty()) {
+        throw AppwriteException("Missing required parameter: 'collectionId'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/indexes";
+
+    json payloadJson = {
+        {"databaseId", databaseId},
+        {"collectionId", collectionId},
+        {"key", key},
+        {"type", type},
+        {"attributes", attributes}
+    };
+
+    std::string payload = payloadJson.dump();
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    
+    std::string response;
+
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::INDEX_CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating index. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::deleteIndexes(const std::string& databaseId, const std::string& collectionId, const std::string& key) {
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/indexes/" + key;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::deleteRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::DELETED) { 
+        return response; 
+    } else {
+        throw AppwriteException("Error deleting index. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::getIndexes(const std::string& databaseId, const std::string& collectionId, const std::string& key) {
+
+    if (databaseId.empty()) {
+        throw AppwriteException("Missing required parameter: 'index key'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/indexes/" + key;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    }
+    else {
+        throw AppwriteException("Error fetching index. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+
+}
+
+std::string Databases::getDatabaseUsage(const std::string& databaseId, const std::string& range) {
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/usage?range=" + range;
+    std::cout << "Request URL: " << url << std::endl;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching database usage. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
+std::string Databases::getCollectionUsage(const std::string& databaseId, const std::string& collectionId, const std::string& range) {
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/usage?range=" + range;
+    std::cout << "Request URL: " << url << std::endl;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching collection usage. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }

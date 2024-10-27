@@ -18,7 +18,10 @@ public:
     std::string get(const std::string& databaseId);
     std::string create(const std::string& databaseId, const std::string& name, bool enabled);
     std::string update(const std::string& databaseId, const std::string& name, bool enabled);
-
+    std::string getDatabaseUsage(const std::string& databaseId, const std::string& range);
+    std::string getCollectionUsage(const std::string& databaseId, const std::string& collectionId, const std::string& range);
+  
+ 
     // collections
     std::string listCollection();
     std::string createCollection(const std::string& databaseId, const std::string& collectionId, const std::string& name,  bool enabled);
@@ -40,10 +43,21 @@ public:
     std::string updateEmailAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, std::string& new_key);
     std::string updateEnumAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements, std::string& new_key);
     std::string updateFloatAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, double min, double max, const std::string& defaultValue, std::string& new_key);
-    std::string updateIntegerAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, int min, int max, const std::string& defaultValue, std::string& new_key);
-
-    // docs
+    std::string updateIntegerAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, int min, int max, const std::string& defaultValue, std::string& new_key); 
+    std::string updateIPaddressAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::string& new_key);
+    std::string updateStringAttribute(const std::string& databaseId, const std::string& collectionId, const std::string& attributeId, bool required, const std::string& defaultValue, const std::vector<std::string>& elements, int size, std::string& new_key);
+ 
+    // document
     std::string createDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data);
+    std::string listDocument(const std::string& databaseId, const std::string& collectionId);
+    std::string deleteDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId);
+    std::string getDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId);
+
+    //indexes
+    std::string listIndexes(const std::string& databaseId, const std::string& collectionId);
+    std::string createIndexes(const std::string& databaseId, const std::string& collectionId, const std::string& key, const std::string& type, const std::vector<std::string> &attributes);
+    std::string deleteIndexes(const std::string& databaseId, const std::string& collectionId, const std::string& key);
+    std::string getIndexes(const std::string& databaseId, const std::string& collectionId, const std::string& key);
 
 private:
     std::string apiKey;

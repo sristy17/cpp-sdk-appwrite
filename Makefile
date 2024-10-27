@@ -54,7 +54,10 @@ getDatabase: $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/database/getDatabase $(SRCS) $(EXAMPLES_DIR)/database/getDatabase.cpp $(LDFLAGS)
 listDatabase: $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp
 	$(CXX) $(CXXFLAGS) -o tests/database/listDatabase $(SRCS) $(EXAMPLES_DIR)/database/listDatabase.cpp $(LDFLAGS)
-
+getDatabaseUsage: $(SRCS) $(EXAMPLES_DIR)/database/getDatabaseUsage.cpp
+	$(CXX) $(CXXFLAGS) -o tests/database/getDatabaseUsage $(SRCS) $(EXAMPLES_DIR)/database/getDatabaseUsage.cpp $(LDFLAGS)
+getCollectionUsage: $(SRCS) $(EXAMPLES_DIR)/database/getCollectionUsage.cpp
+	$(CXX) $(CXXFLAGS) -o tests/database/getCollectionUsage $(SRCS) $(EXAMPLES_DIR)/database/getCollectionUsage.cpp $(LDFLAGS)
 
 # Database - Collection
 listCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/listCollection.cpp
@@ -68,9 +71,15 @@ updateCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/updateCollection.c
 deleteCollection: $(SRCS) $(EXAMPLES_DIR)/database/collection/deleteCollection.cpp
 	$(CXX) $(CXXFLAGS) -o tests/collection/deleteCollection $(SRCS) $(EXAMPLES_DIR)/database/collection/deleteCollection.cpp $(LDFLAGS)
 
-# Database - Document
-createDocument: $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp
-	$(CXX) $(CXXFLAGS) -o tests/createDocument $(SRCS) $(EXAMPLES_DIR)/database/createDocument.cpp $(LDFLAGS)
+# Database-Collection-Document
+createDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/createDocument.cpp
+	$(CXX) $(CXXFLAGS) -o tests/document/createDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/createDocument.cpp $(LDFLAGS)
+listDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/listDocument.cpp
+	$(CXX) $(CXXFLAGS) -o tests/document/listDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/listDocument.cpp $(LDFLAGS)
+deleteDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/deleteDocument.cpp
+	$(CXX) $(CXXFLAGS) -o tests/document/deleteDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/deleteDocument.cpp $(LDFLAGS)
+getDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/getDocument.cpp
+	$(CXX) $(CXXFLAGS) -o tests/document/getDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/getDocument.cpp $(LDFLAGS)
 
 #Collection-Attribute
 listAttributes: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/listAttributes.cpp
@@ -100,7 +109,20 @@ updateFloatAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/upda
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateFloatAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateFloatAttribute.cpp $(LDFLAGS)
 updateIntegerAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateIntegerAttribute.cpp
 	$(CXX) $(CXXFLAGS) -o tests/attribute/updateIntegerAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateIntegerAttribute.cpp $(LDFLAGS)
+updateIPaddressAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateIPaddressAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/updateIPaddressAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateIPaddressAttribute.cpp $(LDFLAGS)
+updateStringAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateStringAttribute.cpp
+	$(CXX) $(CXXFLAGS) -o tests/attribute/updateStringAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateStringAttribute.cpp $(LDFLAGS)
 
+# Collection-Indexes
+listIndexes: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/listIndexes.cpp
+	$(CXX) $(CXXFLAGS) -o tests/indexes/listIndexes $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/listIndexes.cpp $(LDFLAGS)
+createIndex: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/createIndex.cpp
+	$(CXX) $(CXXFLAGS) -o tests/indexes/createIndex $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/createIndex.cpp $(LDFLAGS)
+deleteIndex: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/deleteIndex.cpp
+	$(CXX) $(CXXFLAGS) -o tests/indexes/deleteIndex $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/deleteIndex.cpp $(LDFLAGS)
+getIndex: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/getIndex.cpp
+	$(CXX) $(CXXFLAGS) -o tests/indexes/getIndex $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/getIndex.cpp $(LDFLAGS)
 
 # Storage
 createBucket: $(SRCS) $(EXAMPLES_DIR)/storage/createBucket.cpp
@@ -135,6 +157,32 @@ getDB: $(SRCS) $(EXAMPLES_DIR)/health/getDB.cpp
 	$(CXX) $(CXXFLAGS) -o tests/health/getDB $(SRCS) $(EXAMPLES_DIR)/health/getDB.cpp $(LDFLAGS)
 getPubSub: $(SRCS) $(EXAMPLES_DIR)/health/getPubSub.cpp
 	$(CXX) $(CXXFLAGS) -o tests/health/getPubSub $(SRCS) $(EXAMPLES_DIR)/health/getPubSub.cpp $(LDFLAGS)
+getStorage: $(SRCS) $(EXAMPLES_DIR)/health/getStorage.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getStorage $(SRCS) $(EXAMPLES_DIR)/health/getStorage.cpp $(LDFLAGS)
+getStorageLocal: $(SRCS) $(EXAMPLES_DIR)/health/getStorageLocal.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getStorageLocal $(SRCS) $(EXAMPLES_DIR)/health/getStorageLocal.cpp $(LDFLAGS)
+getTime: $(SRCS) $(EXAMPLES_DIR)/health/getTime.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getTime $(SRCS) $(EXAMPLES_DIR)/health/getTime.cpp $(LDFLAGS)
+getQueue: $(SRCS) $(EXAMPLES_DIR)/health/getQueue.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/getQueue $(SRCS) $(EXAMPLES_DIR)/health/getQueue.cpp $(LDFLAGS)
+getCertificate: $(SRCS) $(EXAMPLES_DIR)/health/params/getCertificate.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getCertificate $(SRCS) $(EXAMPLES_DIR)/health/params/getCertificate.cpp $(LDFLAGS)
+getQueueBuilds: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueBuilds.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueBuilds $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueBuilds.cpp $(LDFLAGS)
+getQueueCertificates: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueCertificates.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueCertificates $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueCertificates.cpp $(LDFLAGS)
+getQueueUsageWebhooks: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageWebhooks.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueUsageWebhooks $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageWebhooks.cpp $(LDFLAGS)
+getQueueUsageDump: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageDump.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueUsageDump $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueUsageDump.cpp $(LDFLAGS)
+getQueueFunctions: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueFunctions.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueFunctions $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueFunctions.cpp $(LDFLAGS)
+getQueueMails: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMails.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueMails $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMails.cpp $(LDFLAGS)
+getQueueMessaging: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMessaging.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueMessaging $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMessaging.cpp $(LDFLAGS)
+getQueueMigrations: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp
+	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueMigrations $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*

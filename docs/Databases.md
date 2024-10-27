@@ -9,6 +9,8 @@ Works around with Databases in Appwrite
 | `get()`  | Fetches the database from the Appwrite project using the unique database ID.                    | [Example](/examples/database/getDatabase.cpp) |
 | `list()`    | Retrieves a list of all databases in the Appwrite project.                                   | [Example](/examples/database/listDatabase.cpp)  |
 | `update()`    | Updates a databases details in the Appwrite project.                                   | [Example](/examples/database/updateDatabase.cpp)  |
+| `getDatabaseUsage()`    | Fetches databases Usage details in the Appwrite project.                                   | [Example](/examples/database/getDatabaseUsage.cpp)  |
+| `getCollectionUsage()`    | Fetches collection Usage  details in the Appwrite project.                                   | [Example](/examples/database/getCollectionUsage.cpp)  |
 
 
 ### Collections
@@ -36,10 +38,25 @@ Works around with Databases in Appwrite
 | `updateFloatAttribute()`  | Updates Float Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateFloatAttribute.cpp) |
 | `createIntegerAttribute()`  | Create Integer Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createIntegerAttribute.cpp) |
 | `updateIntegerAttribute()`  | Update Integer Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateIntegerAttribute.cpp) |
+| `createIPaddressAttribute()`  | Create IP Address Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createIPaddressAttribute.cpp) |
+| `updateIPaddressAttribute()`  | Update IP Address Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateIPaddressAttribute.cpp) |
+| `createStringAttribute()`  | Create String Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/createStringAttribute.cpp) |
+| `updateStringAttribute()`  | Update String Attribute in the database in the Appwrite project   | [Example](/examples/database/collection/attribute/updateStringAttribute.cpp) |
 
+### Indexes
+
+| Method Name | Usage                                                                                          | Link                                                   |
+|-------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------|
+| `listIndexes()`  | List all Indexes from the Collection in the database in the Appwrite project   | [Example](/examples/database/collection/indexes/listIndexes.cpp) |
+| `createIndex()`  | Create Indexes in the Collection in the Appwrite project   | [Example](/examples/database/collection/indexes/createIndex.cpp) |
+| `getIndex()`  | Fetch Indexes in the Collection in the Appwrite project   | [Example](/examples/database/collection/indexes/getIndex.cpp) |
+| `deleteIndex()`  | Delete Indexes in the Collection in the Appwrite project   | [Example](/examples/database/collection/indexes/deleteIndex.cpp) |
 
 ### Documents
 
 | Method Name | Usage                                                                                          | Link                                                   |
 |-------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------|
-| `createDocument`  | Creates a new Document in the Appwrite Collection.   | [Example](/examples/database/createDocument.cpp) |
+| `createDocument`  | Creates a new Document in the Appwrite Collection.   | [Example](/examples/database/collection/document/createDocument.cpp) |
+| `deleteDocument`  | Delete Document in the Appwrite Collection.   | [Example](/examples/database/collection/document/deleteDocument.cpp) |
+| `getDocument`  | Fetches the Document in the Appwrite Collection.   | [Example](/examples/database/collection/document/getDocument.cpp) |
+| `listDocument`  | Retrives a list of Document in the Appwrite Collection.   | [Example](/examples/database/collection/document/listDocument.cpp) |
