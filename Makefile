@@ -183,6 +183,8 @@ getQueueMessaging: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMessaging.cpp
 	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueMessaging $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMessaging.cpp $(LDFLAGS)
 getQueueMigrations: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp
 	$(CXX) $(CXXFLAGS) -o tests/health/params/getQueueMigrations $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp $(LDFLAGS)
+full_flow_test: $(SRCS) $(EXAMPLES_DIR)/full_flow_test.cpp
+	$(CXX) $(CXXFLAGS) -o tests/full_flow_test $(SRCS) $(EXAMPLES_DIR)/full_flow_test.cpp $(LDFLAGS)
 
 clean:
 	rm -f tests/*
