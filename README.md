@@ -1,18 +1,86 @@
 # Appwrite C++ SDK
 
+![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=flat-square&logo=c%2B%2B&logoColor=white)
+![Appwrite](https://img.shields.io/badge/Appwrite-%23FD366E.svg?style=flat-square&logo=appwrite&logoColor=white)
+![GitHub License](https://img.shields.io/github/license/pooranjoyb/cpp-sdk-appwrite)
+![Version](https://img.shields.io/badge/api%20version-0.0.1-blue.svg?style=flat-square)
+
 ![banner-appwrite](https://github.com/user-attachments/assets/63e7dbad-6a49-4b80-bee2-8e0a46601eec)
 
 ## Overview
 
-This C++ SDK is built from scratch as a prototype for interacting with Appwrite's backend services. It allows users to perform a limited set of functionalities, including the creation of databases, collections, and documents, while also enabling the retrieval of usage statistics and management of storage and account health.
+This **C++ SDK** is built from scratch as a **prototype** for interacting with Appwrite's backend services. 
+- It allows users to perform a limited set of functionalities as of now,
+- including the **creation of databases, collections, and documents**,
+- while also enabling the **retrieval of usage statistics** and
+- management of **storage** and **account health**.
 
-## Features
+**This SDK is compatible with Appwrite server version 1.6.x.**
 
-The SDK offers essential features for database management, including the ability to create databases with authentication checks. Users can create collections within these databases and define various attributes for each collection. Additionally, the SDK supports the creation of document indexes, which facilitate efficient querying. Users can retrieve usage statistics for both databases and collections, enabling them to monitor performance and resource utilization. Moreover, the SDK includes functionalities for managing storage classes and checking the health status of the application, along with basic account management capabilities.
+![Appwrite](https://github.com/appwrite/appwrite/raw/main/public/images/github.png)
 
-For a more detailed view of the implementation, please check out the example directory. [Example](/examples/) 
+
+## Getting Started
+
+### Make Your First Request
+
+Set the neccessary header files.
+```cpp
+#include "Appwrite.hpp"
+```
+Once your SDK header is set, create the Appwrite service objects and choose the request to send.
+```cpp
+    std::string projectId = "<your-project-id>";
+    std::string apiKey = "<your-api-key>"; 
+
+    Appwrite appwrite(projectId);
+
+    // for the Databases instance
+    Databases& databases = appwrite.getDatabases();
+    databases.setup(apiKey, projectId);
+```
+
+### Full Example
+```cpp
+#include "Appwrite.hpp"
+#include <iostream>
+
+int main() {
+    std::string projectId = "<your-project-id>";
+    std::string apiKey = "<your-api-key>"; 
+    std::string databaseId = "<unique-database-id>";
+    std::string name = "<unique-database-name>";
+    bool enabled = true;
+
+    Appwrite appwrite(projectId);
+    Databases& databases = appwrite.getDatabases();
+    
+    databases.setup(apiKey, projectId);
+    std::string response = databases.create(databaseId, name, enabled);
+
+    return 0;
+}    
+
+```
+### Error Handling
+
+The Appwrite C++ SDK raises `AppwriteException` object with `message`, `code` and `response` properties. You can handle any errors by catching `AppwriteException` and present the `message` to the user or handle it yourself based on the provided error information. Below is an example.
+
+```cpp
+    try {
+        // Send some request here
+    } catch (const AppwriteException& ex) {
+        std::cerr << "Exception: " << ex.what() << std::endl;
+    }
+```
+
+For a more detailed view of the implementations, please check out the example directory. [Example](/examples/)
+
+### Learn more
+You can use the following resources to learn more and get help
+- 🚀 [Getting Started Tutorial](youtube-link)
+- 📜 [C++ SDK Docs](/docs)
+
 
 ## License 
-
-This project is licensed under the MIT License, and further details can be found in the LICENSE file.
-[MIT LICENSE](LICENSE)
+This project is licensed under the MIT License, and further details can be found in the [LICENSE](LICENSE) file.
