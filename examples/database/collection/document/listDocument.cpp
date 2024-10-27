@@ -3,15 +3,18 @@
 
 int main() {
     std::string projectId = "66fbb5a100070a3a1d19";
-    std::string apiKey = "";
+    std::string apiKey = ""; 
+    std::string databaseId = "database123";
+    std::string collectionId = "test1234";
+
     Appwrite appwrite(projectId);
     Databases& databases = appwrite.getDatabases();
     
     databases.setup(apiKey, projectId);
 
     try {
-        std::string response = databases.listCollection();
-        std::cout << "Document listed successfully! \nResponse: " << response << std::endl;
+        std::string response = databases.listDocument(databaseId, collectionId);
+        std::cout << "Documents listed successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
     }
