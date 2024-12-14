@@ -2,7 +2,7 @@
 
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=flat-square&logo=c%2B%2B&logoColor=white)
 ![Appwrite](https://img.shields.io/badge/Appwrite-%23FD366E.svg?style=flat-square&logo=appwrite&logoColor=white)
-![GitHub License](https://img.shields.io/github/license/pooranjoyb/cpp-sdk-appwrite)
+![GitHub License](https://img.shields.io/github/license/pooranjoyb/cpp-sdk-appwrite?style=flat-square)
 ![Version](https://img.shields.io/badge/api%20version-0.0.1-blue.svg?style=flat-square)
 
 ![banner-appwrite](https://github.com/user-attachments/assets/63e7dbad-6a49-4b80-bee2-8e0a46601eec)
@@ -105,7 +105,7 @@ For a more detailed view of the implementations, please check out the example di
 
 ### Learn more
 You can use the following resources to learn more and get help
-- 🚀 [Getting Started Tutorial](youtube-link)
+- 🚀 [Getting Started Tutorial](https://www.youtube.com/watch?v=L1D-Ibe7XeU)
 - 📜 [C++ SDK Docs](/docs)
 
 
