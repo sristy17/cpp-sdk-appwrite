@@ -20,6 +20,23 @@ This **C++ SDK** is built from scratch as a **prototype** for interacting with A
 ![Appwrite](https://github.com/appwrite/appwrite/raw/main/public/images/github.png)
 
 
+## Installation
+
+### Build From Source Code
+
+Clone the repository and run the following commands
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
+
+Install the SDK.
+```bash
+sudo make install
+```
+
 ## Getting Started
 
 ### Make Your First Request
@@ -72,6 +89,16 @@ The Appwrite C++ SDK raises `AppwriteException` object with `message`, `code` an
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
     }
+```
+
+### Compilation & Execution
+
+```bash
+# Compile
+g++ -o <output-file-name> <your-file-name>.cpp -I/usr/local/include/AppwriteSDK -L/usr/local/lib -lAppwriteSDK -lcurl
+
+# Execute
+./output-file-name
 ```
 
 For a more detailed view of the implementations, please check out the example directory. [Example](/examples/)
