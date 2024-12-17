@@ -189,6 +189,9 @@ deleteFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/deleteFile.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/files/deleteFile $(SRCS) $(EXAMPLES_DIR)/storage/files/deleteFile.cpp $(LDFLAGS)
 getFileDownload: $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileDownload.cpp
 	$(CXX) $(CXXFLAGS) -o tests/storage/files/getFileDownload $(SRCS) $(EXAMPLES_DIR)/storage/files/getFileDownload.cpp $(LDFLAGS)
+createFile: $(SRCS) $(EXAMPLES_DIR)/storage/files/createFile.cpp
+	$(CXX) $(CXXFLAGS) -o tests/storage/files/createFile $(SRCS) $(EXAMPLES_DIR)/storage/files/createFile.cpp $(LDFLAGS)
+
 
 # Health
 getHealth: $(SRCS) $(EXAMPLES_DIR)/health/getHealth.cpp
