@@ -255,3 +255,37 @@ std::string Storage::updateFile(const std::string &bucketId, const std::string &
         throw AppwriteException("Error updating file. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
+
+std::string Storage::createFile(const std::string &bucketId, const std::string &fileName, const std::string &fileContent, const std::vector<std::string> &permissions) {
+    Validator::validateStorageParams(bucketId, fileName);
+
+    std::string url = Config::API_BASE_URL + "/storage/buckets/" + bucketId + "/files";
+
+    std::string boundary = "----AppwriteBoundary";
+    std::ostringstream payload;
+
+    // preparing the multipart-formdata
+    payload << "--" << boundary << "\r\n"
+            << "Content-Disposition: form-data; name=\"fileId\"\r\n\r\n"
+            << fileName << "\r\n";
+
+    payload << "--" << boundary << "\r\n"
+            << "Content-Disposition: form-data; name=\"file\"; filename=\"" << fileName << "\"\r\n"
+            << "Content-Type: text/plain\r\n\r\n"
+            << fileContent << "\r\n";
+
+    payload << "--" << boundary << "--\r\n";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: multipart/form-data; boundary=" + boundary);
+
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload.str(), headers, response);
+
+    if (statusCode == HttpStatus::OK || statusCode == HttpStatus::CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating file. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
