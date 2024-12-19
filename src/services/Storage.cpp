@@ -267,7 +267,7 @@ std::string Storage::createFile(const std::string &bucketId, const std::string &
     // preparing the multipart-formdata
     payload << "--" << boundary << "\r\n"
             << "Content-Disposition: form-data; name=\"fileId\"\r\n\r\n"
-            << fileName << "\r\n";`
+            << fileName << "\r\n";
 
     payload << "--" << boundary << "\r\n"
             << "Content-Disposition: form-data; name=\"file\"; filename=\"" << fileName << "\"\r\n"
