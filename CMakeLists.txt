@@ -3,7 +3,10 @@ project(AppwriteSDK CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
-include_directories(include)
+include_directories(${CMAKE_BINARY_DIR}/conan/include)
+link_directories(${CMAKE_BINARY_DIR}/conan/lib)
+
+find_package(CURL REQUIRED)
 
 set(SRCS
     src/Appwrite.cpp
@@ -17,7 +20,9 @@ set(SRCS
 
 add_library(AppwriteSDK STATIC ${SRCS})
 
-target_link_libraries(AppwriteSDK curl)
+include_directories(include)
+
+target_link_libraries(AppwriteSDK CURL::libcurl)
 
 set_target_properties(AppwriteSDK PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
@@ -38,3 +43,4 @@ set(HEADERS
 
 install(DIRECTORY include/ DESTINATION /usr/local/include/AppwriteSDK)
 install(FILES ${HEADERS} DESTINATION /usr/local/include/AppwriteSDK)
+install(TARGETS AppwriteSDK ARCHIVE DESTINATION /usr/local/lib)

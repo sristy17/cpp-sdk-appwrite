@@ -22,12 +22,20 @@ This **C++ SDK** is built from scratch as a **prototype** for interacting with A
 
 ## Installation
 
+### Prerequisites
+
+Before you begin, ensure that you have Conan installed on your system. You can install Conan using `pip`:
+
+```bash
+pip install conan
+```
+
 ### Build From Source Code
 
 Clone the repository and run the following commands
 ```bash
-mkdir build
-cd build
+mkdir build && cd build
+conan install .. --build=missing
 cmake ..
 make
 ```
@@ -93,11 +101,13 @@ The Appwrite C++ SDK raises `AppwriteException` object with `message`, `code` an
 
 ### Compilation & Execution
 
+- ### Compile
 ```bash
-# Compile
 g++ -o <output-file-name> <your-file-name>.cpp -I/usr/local/include/AppwriteSDK -L/usr/local/lib -lAppwriteSDK -lcurl
+```
 
-# Execute
+- ### Execute
+```bash
 ./output-file-name
 ```
 
