@@ -7,10 +7,8 @@
 #include "enums/HttpStatus.hpp"
 #include "exceptions/AppwriteException.hpp"
 
-void Storage::setup(const std::string &apiKey, const std::string &projectId) {
-    this->apiKey = apiKey;
-    this->projectId = projectId;
-}
+Storage::Storage(const std::string& projectId, const std::string& apiKey)
+    : projectId(projectId), apiKey(apiKey) {}
 
 std::string Storage::createBucket(const std::string& bucketId, const std::string& name,
                              const std::vector<std::string>& permissions,

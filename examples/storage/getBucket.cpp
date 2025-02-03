@@ -4,15 +4,12 @@
 int main() {
     std::string projectId = "66fbb5a100070a3a1d19";
     std::string apiKey = "";
-    std::string bucketId = "bucket123";
+    std::string bucketId = "bucket12322";
 
-    Appwrite appwrite(projectId);
-    Storage& storage = appwrite.getStorage();
-    
-    storage.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = storage.getBucket(bucketId);
+        std::string response = appwrite.getStorage().getBucket(bucketId);
         std::cout << "Bucket fetched successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
