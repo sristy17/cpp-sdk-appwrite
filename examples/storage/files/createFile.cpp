@@ -6,13 +6,11 @@
 int main() {
     std::string projectId = "66fbb5a100070a3a1d19";
     std::string apiKey = "";
-    std::string bucketId = "bucket12322";
+    std::string bucketId = "bucketnew";
     std::string fileName = "example.txt";
-    std::string filePath = "examples/storage/files/example.txt";
+    std::string filePath = "../../../examples/storage/files/example.txt";
 
-    Appwrite appwrite(projectId);
-    Storage& storage = appwrite.getStorage();
-    storage.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
         std::ifstream file(filePath, std::ios::binary | std::ios::ate);
@@ -30,7 +28,7 @@ int main() {
         }
 
         std::vector<std::string> permissions = {"role:all"};
-        std::string response = storage.createFile(bucketId, fileName, fileContent, permissions);
+        std::string response = appwrite.getStorage().createFile(bucketId, fileName, fileContent, permissions);
 
         std::cout << "File created successfully!\n\nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {

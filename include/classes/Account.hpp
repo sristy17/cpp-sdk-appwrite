@@ -8,11 +8,13 @@
 
 class Account {
 public:
-    void setup(const std::string& projectId);
+    Account(const std::string& projectId, const std::string& apiKey);
+
     bool createAccount(const std::string& email, const std::string& password, const std::string& userId, const std::string& name);
     std::string createSession(const std::string& email, const std::string& password);
 
 private:
+    std::string apiKey;
     std::string projectId;
 };
 

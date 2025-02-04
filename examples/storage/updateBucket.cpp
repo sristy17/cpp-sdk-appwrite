@@ -7,10 +7,7 @@ int main() {
     std::string bucketId = "bucket12322";
     std::string name = "testBucketupdated";
 
-    Appwrite appwrite(projectId);
-    Storage& storage = appwrite.getStorage();
-    
-    storage.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
     
     std::vector<std::string> permissions = {"read(\"any\")", "write(\"any\")"};
     bool fileSecurity = false;
@@ -18,11 +15,11 @@ int main() {
     int maximumFileSize = 30000000;
     std::vector<std::string> allowedFileExtensions = {"jpg", "png"};
     std::string compression = "gzip";
-    bool antivirus = false;
+    bool antivirus = true;
     bool encryption = false;
 
     try {
-        std::string response = storage.updateBucket(
+        std::string response = appwrite.getStorage().updateBucket(
             bucketId, 
             name, 
             permissions, 

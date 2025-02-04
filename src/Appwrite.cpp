@@ -1,8 +1,9 @@
 #include "Appwrite.hpp"
 
-Appwrite::Appwrite(const std::string& projectId) : account() , databases() {
-    account.setup(projectId);
-}
+Appwrite::Appwrite(const std::string& projectId, const std::string& apiKey)
+    : projectId(projectId), apiKey(apiKey), account(projectId, apiKey),
+      databases(projectId, apiKey), storage(projectId, apiKey), health(projectId, apiKey) {}
+
 
 Account& Appwrite::getAccount() {
     return account;

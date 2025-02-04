@@ -11,7 +11,7 @@ using json = nlohmann::json;
 
 class Databases {
 public:
-    void setup(const std::string& apiKey, const std::string& projectId);
+    Databases(const std::string& projectId, const std::string& apiKey);
 
     // Database
     std::string list();

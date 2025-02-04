@@ -12,7 +12,7 @@ using json = nlohmann::json;
 class Storage
 {
 public:
-    void setup(const std::string &apiKey, const std::string &projectId);
+    Storage(const std::string& projectId, const std::string& apiKey);
 
     //core
     std::string listBuckets();
