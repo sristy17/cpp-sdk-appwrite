@@ -8,7 +8,7 @@
 
 class Appwrite {
 public:
-    Appwrite(const std::string& projectId, const std::string& apiKey);
+    Appwrite(const std::string& projectId, const std::string& apiKey = "");
     Account& getAccount();
     Databases& getDatabases();
     Storage& getStorage();

@@ -1,7 +1,7 @@
 #include "Appwrite.hpp"
 
 Appwrite::Appwrite(const std::string& projectId, const std::string& apiKey)
-    : projectId(projectId), apiKey(apiKey), account(projectId, apiKey),
+    : projectId(projectId), apiKey(apiKey), account(projectId),
       databases(projectId, apiKey), storage(projectId, apiKey), health(projectId, apiKey) {}
 
 
