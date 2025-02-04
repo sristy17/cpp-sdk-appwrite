@@ -6,8 +6,7 @@
 #include "enums/HttpStatus.hpp"
 #include "exceptions/AppwriteException.hpp"
 
-Account::Account(const std::string& projectId, const std::string& apiKey)
-    : projectId(projectId), apiKey(apiKey) {}
+Account::Account(const std::string& projectId) : projectId(projectId) {}
 
 bool Account::createAccount(const std::string& email, const std::string& password, const std::string& userId, const std::string& name = "") {
     

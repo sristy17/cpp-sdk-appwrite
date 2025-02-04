@@ -86,9 +86,9 @@ all: $(BINS)
 
 # Account 
 createAccount: $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp
-	$(CXX) $(CXXFLAGS) -o ./tests/createAccount $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o ./tests/account/createAccount $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp $(LDFLAGS)
 createSession: $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp
-	$(CXX) $(CXXFLAGS) -o ./tests/createSession $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o ./tests/account/createSession $(SRCS) $(EXAMPLES_DIR)/account/createSession.cpp $(LDFLAGS)
 
 # Database
 createDatabase: $(SRCS) $(EXAMPLES_DIR)/database/createDatabase.cpp
