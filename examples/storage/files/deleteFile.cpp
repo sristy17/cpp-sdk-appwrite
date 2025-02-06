@@ -4,16 +4,13 @@
 int main() {
     std::string projectId = "66fbb5a100070a3a1d19";
     std::string apiKey = "";
-    std::string fileId = "6711ee630008e3491a68";
-    std::string bucketId = "bucket12322";
+    std::string fileId = "example.txt";
+    std::string bucketId = "bucketnew";
 
-    Appwrite appwrite(projectId);
-    Storage& storage = appwrite.getStorage();
-    
-    storage.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = storage.deleteFile(bucketId, fileId);
+        std::string response = appwrite.getStorage().deleteFile(bucketId, fileId);
         std::cout << "File deleted successfully! \n " << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

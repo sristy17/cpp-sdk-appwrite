@@ -7,10 +7,8 @@
 #include "enums/HttpStatus.hpp"
 #include "exceptions/AppwriteException.hpp"
 
-void Databases::setup(const std::string &apiKey, const std::string &projectId) {
-    this->apiKey = apiKey;
-    this->projectId = projectId;
-}
+Databases::Databases(const std::string& projectId, const std::string& apiKey)
+    : projectId(projectId), apiKey(apiKey) {}
 
 //database
 std::string Databases::create(const std::string &databaseId, const std::string &name, bool enabled = false) {

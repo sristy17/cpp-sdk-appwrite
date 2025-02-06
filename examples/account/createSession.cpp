@@ -7,12 +7,11 @@ int main() {
     std::string password = "pasvsdvsefefword";
 
     Appwrite appwrite(projectId);
-    Account& auth = appwrite.getAccount();
 
     try {
-        std::string response = auth.createSession(email, password);
+        std::string response = appwrite.getAccount().createSession(email, password);
         std::cout << "\nSession created." << std::endl;
-        std::cout<< "\n\nResponse  : " << response;
+        std::cout<< "\nResponse  : " << response;
 
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
