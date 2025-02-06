@@ -5,18 +5,12 @@ int main() {
     std::string projectId = "66fbb5a100070a3a1d19";
     std::string apiKey = ""; 
     
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string databaseId;
-        std::string databasesResponse = databases.list();
-        databaseId = "database123"; 
-
+        std::string databaseId = "database123"; 
         std::string usageRange = "24h"; 
-        std::string response = databases.getDatabaseUsage(databaseId, usageRange);
+        std::string response = appwrite.getDatabases().getDatabaseUsage(databaseId, usageRange);
         
         std::cout << "Database usage fetched successfully! \nResponse: " << response << std::endl;
 

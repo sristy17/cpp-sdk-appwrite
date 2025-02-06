@@ -8,13 +8,10 @@ int main() {
     std::string collectionId = "test1234";
     std::string documentId = "document1234";
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
      try {
-        std::string response = databases.deleteDocument(databaseId, collectionId, documentId);
+        std::string response = appwrite.getDatabases().deleteDocument(databaseId, collectionId, documentId);
         std::cout << "document deleted successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

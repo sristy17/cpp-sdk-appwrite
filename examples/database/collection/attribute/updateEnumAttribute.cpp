@@ -12,13 +12,10 @@ int main() {
     std::vector<std::string> elements = {"element1234"};
     std::string new_key = "new_enum_attribute";
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.updateEnumAttribute(databaseId, collectionId, attributeId, required, defaultValue, elements, new_key);
+        std::string response = appwrite.getDatabases().updateEnumAttribute(databaseId, collectionId, attributeId, required, defaultValue, elements, new_key);
         std::cout << "Enum attribute updated successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

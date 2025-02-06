@@ -14,13 +14,10 @@ int main() {
     int size = 5;
     std::string new_key = "UpdatedString123"; 
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.updateStringAttribute(databaseId, collectionId, attributeId, required, defaultValue, elements, size, new_key);
+        std::string response = appwrite.getDatabases().updateStringAttribute(databaseId, collectionId, attributeId, required, defaultValue, elements, size, new_key);
         std::cout << "String attribute updated successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

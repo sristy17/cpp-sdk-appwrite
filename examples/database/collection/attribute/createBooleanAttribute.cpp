@@ -10,13 +10,10 @@ int main() {
     bool defaultValue = true; 
     bool required = true; 
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.createBooleanAttribute(databaseId, collectionId, attributeId, defaultValue, required);
+        std::string response = appwrite.getDatabases().createBooleanAttribute(databaseId, collectionId, attributeId, defaultValue, required);
         std::cout << "Boolean attribute created successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

@@ -6,13 +6,10 @@ int main() {
     std::string apiKey = "";  
     std::string databaseId = "database123"; 
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.listCollection(databaseId);  
+        std::string response = appwrite.getDatabases().listCollection(databaseId);  
         std::cout << "Collections listed successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

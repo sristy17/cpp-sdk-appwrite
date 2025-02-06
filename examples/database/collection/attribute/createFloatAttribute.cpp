@@ -12,13 +12,10 @@ int main() {
     double max = 100.0; 
     std::string defaultValue = "";
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.createFloatAttribute(databaseId, collectionId, attributeId, required, min, max, defaultValue);
+        std::string response = appwrite.getDatabases().createFloatAttribute(databaseId, collectionId, attributeId, required, min, max, defaultValue);
         std::cout << "Float attribute created successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

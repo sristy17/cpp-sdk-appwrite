@@ -62,7 +62,6 @@ Once your SDK header is set, create the Appwrite service objects and choose the 
 
     // for the Databases instance
     Databases& databases = appwrite.getDatabases();
-    databases.setup(apiKey, projectId);
 ```
 
 ### Full Example
@@ -77,11 +76,9 @@ int main() {
     std::string name = "<unique-database-name>";
     bool enabled = true;
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
+    Appwrite appwrite(projectId, apiKey);
     
-    databases.setup(apiKey, projectId);
-    std::string response = databases.create(databaseId, name, enabled);
+    std::string response = appwrite.getDatabases().create(databaseId, name, enabled);
 
     return 0;
 }    
