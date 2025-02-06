@@ -8,13 +8,10 @@ int main() {
     std::string collectionId = "test1234";
     std::string indexKey = "index_1"; 
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.getCollection(databaseId, collectionId);
+        std::string response = appwrite.getDatabases().getIndexes(databaseId, collectionId, indexKey);
         std::cout << "Index fetched successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

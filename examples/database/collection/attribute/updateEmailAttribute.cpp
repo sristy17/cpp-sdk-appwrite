@@ -11,13 +11,10 @@ int main() {
     std::string new_key = "new_email_attribute";
     std::string defaultValue = "";
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.updateEmailAttribute(databaseId, collectionId, attributeId, required, defaultValue, new_key);
+        std::string response = appwrite.getDatabases().updateEmailAttribute(databaseId, collectionId, attributeId, required, defaultValue, new_key);
         std::cout << "Email attribute updated successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

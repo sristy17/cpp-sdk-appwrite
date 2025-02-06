@@ -7,13 +7,10 @@ int main() {
     std::string databaseId = "database123";
     std::string collectionId = "test123";
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
      try {
-        std::string response = databases.deleteCollection(databaseId, collectionId);
+        std::string response = appwrite.getDatabases().deleteCollection(databaseId, collectionId);
         std::cout << "collection deleted successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

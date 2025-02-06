@@ -12,13 +12,10 @@ int main() {
     std::vector<std::string> elements = {"element123"};
     int size = 255;
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.createStringAttribute(databaseId, collectionId, attributeId, required, defaultValue, elements, size);
+        std::string response = appwrite.getDatabases().createStringAttribute(databaseId, collectionId, attributeId, required, defaultValue, elements, size);
         std::cout << "String attribute created successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

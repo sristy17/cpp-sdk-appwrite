@@ -11,13 +11,10 @@ int main() {
     bool defaultValue = false; 
     bool required = false; 
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.updateBooleanAttribute(databaseId, collectionId, attributeId, defaultValue, required, new_key);
+        std::string response = appwrite.getDatabases().updateBooleanAttribute(databaseId, collectionId, attributeId, defaultValue, required, new_key);
         std::cout << "Boolean attribute updated successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
