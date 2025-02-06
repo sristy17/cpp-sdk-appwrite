@@ -4,14 +4,10 @@
 int main() {
     std::string projectId = "66fbb5a100070a3a1d19";
     std::string apiKey = "";
-
-    Appwrite appwrite(projectId);
-    Health& health = appwrite.getHealth();
-    
-    health.setup(apiKey, projectId);
-
+    Appwrite appwrite(projectId, apiKey);
+   
     try {
-        std::string response = health.getAntivirus();
+        std::string response = appwrite.getHealth().getAntivirus();
         std::cout << "Health Check Done! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
