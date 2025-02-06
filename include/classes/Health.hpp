@@ -11,7 +11,7 @@ public:
     Health(const std::string& projectId, const std::string& apiKey);
 
     // core
-    std::string getHealth();
+    std::string getHealthStatus();
     std::string getAntivirus();
     std::string getCache();
     std::string getDB();
