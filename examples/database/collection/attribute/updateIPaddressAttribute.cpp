@@ -11,13 +11,10 @@ int main() {
     std::string new_key = "UpdatedIPaddress123"; 
     std::string defaultValue = ""; 
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.updateIPaddressAttribute(databaseId, collectionId, attributeId, required, defaultValue, new_key);
+        std::string response = appwrite.getDatabases().updateIPaddressAttribute(databaseId, collectionId, attributeId, required, defaultValue, new_key);
         std::cout << "IP Address attribute updated successfully!\nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Appwrite exception: " << ex.what() << std::endl;

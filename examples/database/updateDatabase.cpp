@@ -8,13 +8,10 @@ int main() {
     std::string name = "sampledb112";
     bool enabled = true;
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.update(databaseId, name, enabled);
+        std::string response = appwrite.getDatabases().update(databaseId, name, enabled);
         std::cout << "Database updated successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

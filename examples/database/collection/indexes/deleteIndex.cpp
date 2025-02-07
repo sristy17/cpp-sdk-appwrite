@@ -8,13 +8,10 @@ int main() {
     std::string collectionId = "test1234";
     std::string indexKey = "index_from_cpp"; 
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.deleteIndexes(databaseId, collectionId, indexKey);
+        std::string response = appwrite.getDatabases().deleteIndexes(databaseId, collectionId, indexKey);
         std::cout << "Index deleted successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

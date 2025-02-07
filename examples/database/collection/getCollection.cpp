@@ -7,13 +7,10 @@ int main() {
     std::string databaseId = "database123";
     std::string collectionId = "test1234";
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.getCollection(databaseId, collectionId);
+        std::string response = appwrite.getDatabases().getCollection(databaseId, collectionId);
         std::cout << "Collection fetched successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

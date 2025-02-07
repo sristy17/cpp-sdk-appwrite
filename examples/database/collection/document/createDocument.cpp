@@ -18,14 +18,11 @@ int main()
         {"UpdatedString123", {"abc", "def"}} 
     };
 
-    Appwrite appwrite(projectId);
-    Databases &databases = appwrite.getDatabases();
-
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try
     {
-        std::string response = databases.createDocument(databaseId, collectionId, documentId, data);
+        std::string response = appwrite.getDatabases().createDocument(databaseId, collectionId, documentId, data);
         std::cout << "Document created successfully! \nResponse: " << response << std::endl;
     }
     catch (const AppwriteException &ex)

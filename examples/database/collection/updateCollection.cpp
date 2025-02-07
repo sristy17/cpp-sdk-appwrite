@@ -9,13 +9,10 @@ int main() {
     std::string name = "schanged_collection_name_112";
     bool enabled = true;
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.updateCollection(databaseId, collectionId, name, enabled);
+        std::string response = appwrite.getDatabases().updateCollection(databaseId, collectionId, name, enabled);
         std::cout << "collection updated successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

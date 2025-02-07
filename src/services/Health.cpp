@@ -7,12 +7,10 @@
 #include "enums/HttpStatus.hpp"
 #include "exceptions/AppwriteException.hpp"
 
-void Health::setup(const std::string &apiKey, const std::string &projectId) {
-    this->apiKey = apiKey;
-    this->projectId = projectId;
-}
+Health::Health(const std::string& projectId, const std::string& apiKey)
+    : projectId(projectId), apiKey(apiKey) {}
 
-std::string Health::getHealth(){
+std::string Health::getHealthStatus(){
 
     std::string url = Config::API_BASE_URL + "/health";
 

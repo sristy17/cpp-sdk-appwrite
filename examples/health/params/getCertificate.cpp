@@ -3,16 +3,12 @@
 
 int main() {
     std::string projectId = "66fbb5a100070a3a1d19";
-    std::string apiKey = "";
     std::string domain = "pooranjoyb.tech";
-
-    Appwrite appwrite(projectId);
-    Health& health = appwrite.getHealth();
-    
-    health.setup(apiKey, projectId);
+    std::string apiKey = "";
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = health.getCertificate(domain);
+        std::string response = appwrite.getHealth().getCertificate(domain);
         std::cout << "Health Check Done! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

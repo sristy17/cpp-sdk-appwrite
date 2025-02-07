@@ -11,13 +11,10 @@ int main() {
     std::string defaultValue = "";
     std::vector<std::string> elements = {"element123"};
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.createEnumAttribute(databaseId, collectionId, attributeId, required, defaultValue, elements);
+        std::string response = appwrite.getDatabases().createEnumAttribute(databaseId, collectionId, attributeId, required, defaultValue, elements);
         std::cout << "Enum attribute created successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

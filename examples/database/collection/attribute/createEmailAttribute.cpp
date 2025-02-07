@@ -10,13 +10,10 @@ int main() {
     bool required = true; 
     std::string defaultValue = "";
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.createEmailAttribute(databaseId, collectionId, attributeId, required, defaultValue);
+        std::string response = appwrite.getDatabases().createEmailAttribute(databaseId, collectionId, attributeId, required, defaultValue);
         std::cout << "Email attribute created successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

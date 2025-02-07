@@ -4,13 +4,10 @@
 int main() {
     std::string projectId = "66fbb5a100070a3a1d19";
     std::string apiKey = "";
-    std::string bucketId = "bucket12322";
-    std::string name = "testBucketnew";
+    std::string bucketId = "bucketnew";
+    std::string name = "PEWPEWPEW";
 
-    Appwrite appwrite(projectId);
-    Storage& storage = appwrite.getStorage();
-    
-    storage.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
     
     std::vector<std::string> permissions = {"read(\"any\")", "write(\"any\")"};
     bool fileSecurity = true;
@@ -22,7 +19,7 @@ int main() {
     bool encryption = true;
 
     try {
-        std::string response = storage.createBucket(
+        std::string response = appwrite.getStorage().createBucket(
             bucketId, 
             name, 
             permissions, 

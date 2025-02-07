@@ -13,13 +13,10 @@ int main() {
     std::string defaultValue = "";
     std::string new_key = "UpdatedFloat123"; 
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
-    
-    databases.setup(apiKey, projectId);
+    Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = databases.updateFloatAttribute(databaseId, collectionId, attributeId, required, min, max, defaultValue, new_key);
+        std::string response = appwrite.getDatabases().updateFloatAttribute(databaseId, collectionId, attributeId, required, min, max, defaultValue, new_key);
         std::cout << "Float attribute updated successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

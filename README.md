@@ -3,7 +3,7 @@
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=flat-square&logo=c%2B%2B&logoColor=white)
 ![Appwrite](https://img.shields.io/badge/Appwrite-%23FD366E.svg?style=flat-square&logo=appwrite&logoColor=white)
 ![GitHub License](https://img.shields.io/github/license/pooranjoyb/cpp-sdk-appwrite?style=flat-square)
-![Version](https://img.shields.io/badge/api%20version-0.0.1-blue.svg?style=flat-square)
+![Version](https://img.shields.io/badge/api%20version-1.0.0-blue.svg?style=flat-square)
 
 ![banner-appwrite](https://github.com/user-attachments/assets/63e7dbad-6a49-4b80-bee2-8e0a46601eec)
 
@@ -62,7 +62,6 @@ Once your SDK header is set, create the Appwrite service objects and choose the 
 
     // for the Databases instance
     Databases& databases = appwrite.getDatabases();
-    databases.setup(apiKey, projectId);
 ```
 
 ### Full Example
@@ -77,11 +76,9 @@ int main() {
     std::string name = "<unique-database-name>";
     bool enabled = true;
 
-    Appwrite appwrite(projectId);
-    Databases& databases = appwrite.getDatabases();
+    Appwrite appwrite(projectId, apiKey);
     
-    databases.setup(apiKey, projectId);
-    std::string response = databases.create(databaseId, name, enabled);
+    std::string response = appwrite.getDatabases().create(databaseId, name, enabled);
 
     return 0;
 }    
