@@ -5,6 +5,7 @@
 #include "classes/Databases.hpp"
 #include "classes/Storage.hpp"
 #include "classes/Health.hpp"
+#include "classes/Messaging.hpp"
 
 class Appwrite {
 public:
@@ -13,6 +14,7 @@ public:
     Databases& getDatabases();
     Storage& getStorage();
     Health& getHealth();
+    Messaging& getMessaging();
     
 private:
     std::string projectId;
@@ -21,6 +23,7 @@ private:
     Databases databases;
     Storage storage;
     Health health;
+    Messaging messaging;
 };
 
 #endif
