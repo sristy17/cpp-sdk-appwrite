@@ -12,6 +12,7 @@ SRCS = \
     $(SRC_DIR)/services/Databases.cpp \
     $(SRC_DIR)/services/Storage.cpp \
     $(SRC_DIR)/services/Health.cpp \
+    $(SRC_DIR)/services/Messaging.cpp \
     $(SRC_DIR)/Utils.cpp \
     $(SRC_DIR)/Validator.cpp \
 
@@ -80,6 +81,7 @@ BINS = \
 	getQueueMails \
 	getQueueMessaging \
 	getQueueMigrations \
+	getTopics \
 
 # build all binaries
 all: $(BINS)
@@ -235,3 +237,7 @@ getQueueMigrations: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp
 	$(CXX) $(CXXFLAGS) -o ./tests/health/params/getQueueMigrations $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp $(LDFLAGS)
 full_flow_test: $(SRCS) $(EXAMPLES_DIR)/full_flow_test.cpp
 	$(CXX) $(CXXFLAGS) -o ./tests/full_flow_test $(SRCS) $(EXAMPLES_DIR)/full_flow_test.cpp $(LDFLAGS)
+
+# Messaging
+getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
+	$(CXX) $(CXXFLAGS) -o ./tests/messaging/topics/getTopic $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp $(LDFLAGS)
