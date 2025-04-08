@@ -10,6 +10,7 @@ SRCS = \
     $(SRC_DIR)/Appwrite.cpp \
     $(SRC_DIR)/services/Account.cpp \
     $(SRC_DIR)/services/Databases.cpp \
+    $(SRC_DIR)/services/Query.cpp \
     $(SRC_DIR)/services/Storage.cpp \
     $(SRC_DIR)/services/Health.cpp \
     $(SRC_DIR)/services/Messaging.cpp \
