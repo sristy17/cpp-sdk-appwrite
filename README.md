@@ -24,9 +24,12 @@ This **C++ SDK** is built from scratch as a **prototype** for interacting with A
 
 ### Prerequisites
 
-Before you begin, ensure that you have Conan installed on your system. You can install Conan using `pip`:
+Before you begin, ensure that you have `conan` & `clang-format` installed on your system. 
+- You can install `conan` using `pip`,
+- and `clang-format` using `apt`
 
 ```bash
+sudo apt install clang-format
 pip install conan
 ```
 
