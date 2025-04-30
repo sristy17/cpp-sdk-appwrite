@@ -11,6 +11,26 @@
 Messaging::Messaging(const std::string &projectId, const std::string &apiKey)
     : projectId(projectId), apiKey(apiKey) {}
 
+std::string Messaging::listMessages(Queries &queries) {
+    std::string url =
+        Config::API_BASE_URL + "/messaging/messages" + queries.to_string();
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error listing messages. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
+    }
+}
+
 std::string Messaging::getTopic(const std::string &topicId) {
     if (topicId.empty()) {
         throw AppwriteException("Missing required parameter: 'topicId'");
