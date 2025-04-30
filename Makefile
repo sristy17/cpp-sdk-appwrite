@@ -5,7 +5,7 @@ LDFLAGS = -lcurl
 SRC_DIR = src
 INCLUDE_DIR = include
 EXAMPLES_DIR = examples
-TESTS_DIR = tests/
+TESTS_DIR = tests
 
 SRCS = \
     $(SRC_DIR)/Appwrite.cpp \
@@ -233,7 +233,12 @@ getQueueMigrations: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp
 				@mkdir -p ./$(TESTS_DIR)
 				$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/params/getQueueMigrations $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp $(LDFLAGS)
 
-# Messaging
+# Messaging - Messages
+listMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp
+			@mkdir -p ./$(TESTS_DIR)
+			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp $(LDFLAGS)
+
+# Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getTopic $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp $(LDFLAGS)
@@ -246,6 +251,8 @@ deleteTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/deleteTopic.cpp
 createTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/createTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createTopic $(SRCS) $(EXAMPLES_DIR)/messaging/topics/createTopic.cpp $(LDFLAGS)
+
+# Messaging - subscribers
 getSubscriber: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/getSubscriber.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getSubscriber $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/getSubscriber.cpp $(LDFLAGS)
