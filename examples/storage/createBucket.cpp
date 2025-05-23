@@ -4,8 +4,8 @@
 int main() {
     std::string projectId = "66fbb5a100070a3a1d19";
     std::string apiKey = "";
-    std::string bucketId = "bucketnew";
-    std::string name = "PEWPEWPEW";
+    std::string bucketId = "bucketnew101";
+    std::string name = "PEWPEWPEWW";
 
     Appwrite appwrite(projectId, apiKey);
     

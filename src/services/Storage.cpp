@@ -22,18 +22,39 @@ Storage::createBucket(const std::string &bucketId, const std::string &name,
 
     std::string url = Config::API_BASE_URL + "/storage/buckets";
 
-    json payloadJson = {{"bucketId", bucketId},
-                        {"name", name},
-                        {"permissions", permissions},
-                        {"fileSecurity", fileSecurity},
-                        {"enabled", enabled},
-                        {"maximumFileSize", maximumFileSize},
-                        {"allowedFileExtensions", allowedFileExtensions},
-                        {"compression", compression},
-                        {"encryption", encryption},
-                        {"antivirus", antivirus}};
+    auto toJsonArray = [](const std::vector<std::string> &vec) {
+        std::string result = "[";
+        for (const auto &item : vec) {
+            result += "\"";
 
-    std::string payload = payloadJson.dump();
+            for (char ch : item) {
+                if (ch == '"')
+                    result += "\\\"";
+                else
+                    result += ch;
+            }
+
+            result += "\",";
+        }
+        if (!vec.empty())
+            result.pop_back();
+        result += "]";
+        return result;
+    };
+
+    std::string permissionsStr = toJsonArray(permissions);
+    std::string extensionsStr = toJsonArray(allowedFileExtensions);
+
+    std::string payload =
+        R"({"bucketId":")" + bucketId + R"(","name":")" + name +
+        R"(","permissions":)" + permissionsStr + R"(,"fileSecurity":)" +
+        (fileSecurity ? "true" : "false") + R"(,"enabled":)" +
+        (enabled ? "true" : "false") + R"(,"maximumFileSize":)" +
+        std::to_string(maximumFileSize) + R"(,"allowedFileExtensions":)" +
+        extensionsStr + R"(,"compression":")" + compression + "\"" +
+        R"(,"encryption":)" + (encryption ? "true" : "false") +
+        R"(,"antivirus":)" + (antivirus ? "true" : "false") + "}";
+
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);
 
