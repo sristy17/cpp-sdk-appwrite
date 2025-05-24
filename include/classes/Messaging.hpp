@@ -18,6 +18,10 @@ class Messaging {
     std::string deleteTopic(const std::string &topicId);
     std::string createTopic(const std::string &topicId, const std::string &name,
                             const std::vector<std::string> &subscribe);
+    std::string updateTopic(const std::string &topicId,
+      const std::string &name,
+      const std::vector<std::string> &subscribe = {});
+
 
     std::string getSubscriber(const std::string &topicId,
                               const std::string &subscriberId);
