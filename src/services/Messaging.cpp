@@ -98,6 +98,51 @@ std::string Messaging::listTopics(Queries &queries) {
     }
 }
 
+std::string Messaging::updateTopic(const std::string &topicId,
+                                   const std::string &name,
+                                   const std::vector<std::string> &subscribe) {
+    if (topicId.empty()) {
+        throw AppwriteException("Missing required parameter: 'topicId'");
+    }
+
+    if (name.empty()) {
+        throw AppwriteException("Missing required parameter: 'name'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/topics/" + topicId;
+
+    std::string subscribeStr = "[";
+    for (size_t i = 0; i < subscribe.size(); ++i) {
+        subscribeStr += "\"" + Utils::escapeJsonString(subscribe[i]) + "\"";
+        if (i < subscribe.size() - 1)
+            subscribeStr += ",";
+    }
+    subscribeStr += "]";
+
+    std::string payload =
+        "{\"name\": \"" + Utils::escapeJsonString(name) + "\"";
+
+    if (!subscribe.empty()) {
+        payload += ", \"subscribe\": " + subscribeStr;
+    }
+
+    payload += "}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException(
+            "Error updating topic. Status code: " + std::to_string(statusCode) +
+            "\n\nResponse: " + response);
+    }
+}
+
 std::string Messaging::deleteTopic(const std::string &topicId) {
 
     if (topicId.empty()) {
@@ -217,6 +262,36 @@ std::string Messaging::listSubscribers(const std::string &topicId,
         return response;
     } else {
         throw AppwriteException("Error listing subscribers. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
+    }
+}
+
+std::string Messaging::deleteSubscribers(const std::string &topicId,
+                                         const std::string &subscriberId) {
+
+    if (topicId.empty()) {
+        throw AppwriteException("Missing required parameter: 'topicId'");
+    }
+
+    if (subscriberId.empty()) {
+        throw AppwriteException("Missing required parameter: 'subscriberId'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/topics/" + topicId +
+                      "/subscribers/" + subscriberId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::deleteRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::DELETED) {
+        return response;
+    } else {
+        throw AppwriteException("Error deleting subscriber. Status code: " +
                                 std::to_string(statusCode) +
                                 "\n\nResponse: " + response);
     }
