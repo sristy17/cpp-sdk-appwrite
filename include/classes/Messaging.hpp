@@ -12,6 +12,7 @@ class Messaging {
     Messaging(const std::string &projectId, const std::string &apiKey);
 
     std::string listMessages(Queries &queries);
+    std::string getMessages(const std::string &messageId);
 
     std::string getTopic(const std::string &topicId);
     std::string listTopics(Queries &queries);
