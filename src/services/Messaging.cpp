@@ -296,3 +296,47 @@ std::string Messaging::deleteSubscribers(const std::string &topicId,
                                 "\n\nResponse: " + response);
     }
 }
+
+std::string Messaging::createSubscribers(const std::string &topicId,
+                                         const std::string &name,
+                                         const std::string &targetId,
+                                         const std::string &subscriberId) {
+    if (topicId.empty()) {
+        throw AppwriteException("Missing required parameter: 'topicId'");
+    }
+
+    if (name.empty()) {
+        throw AppwriteException("Missing required parameter: 'name'");
+    }
+
+    if (targetId.empty()) {
+        throw AppwriteException("Missing required parameter: 'targetId'");
+    }
+
+    if (subscriberId.empty()) {
+        throw AppwriteException("Missing required parameter: 'subscriberId'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/topics/" +
+                      Utils::urlEncode(topicId) + "/subscribers";
+
+    std::string payload =
+        R"({"subscriberId":")" + Utils::escapeJsonString(subscriberId) +
+        R"(","targetId":")" + Utils::escapeJsonString(targetId) +
+        R"(","name":")" + Utils::escapeJsonString(name) + R"("})";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error Creating Subscriber. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
+    }
+}
