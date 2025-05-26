@@ -254,6 +254,9 @@ deleteTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/deleteTopic.cpp
 createTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/createTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createTopic $(SRCS) $(EXAMPLES_DIR)/messaging/topics/createTopic.cpp $(LDFLAGS)
+updateTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/updateTopic.cpp
+			@mkdir -p ./$(TESTS_DIR)
+			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateTopic $(SRCS) $(EXAMPLES_DIR)/messaging/topics/updateTopic.cpp $(LDFLAGS)
 
 # Messaging - subscribers
 getSubscriber: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/getSubscriber.cpp
@@ -262,3 +265,6 @@ getSubscriber: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/getSubscriber.cpp
 listSubscribers: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/listSubscribers.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listSubscribers $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/listSubscribers.cpp $(LDFLAGS)
+deleteSubscribers: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/deleteSubscribers.cpp
+			@mkdir -p ./$(TESTS_DIR)
+			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteSubscribers $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/deleteSubscribers.cpp $(LDFLAGS)
