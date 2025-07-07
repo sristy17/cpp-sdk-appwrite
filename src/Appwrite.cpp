@@ -2,7 +2,7 @@
 
 Appwrite::Appwrite(const std::string& projectId, const std::string& apiKey)
     : projectId(projectId), apiKey(apiKey), account(projectId),
-      databases(projectId, apiKey), storage(projectId, apiKey), health(projectId, apiKey) {}
+      databases(projectId, apiKey), storage(projectId, apiKey), health(projectId, apiKey), messaging(projectId, apiKey) {}
 
 
 Account& Appwrite::getAccount() {
@@ -19,4 +19,8 @@ Storage& Appwrite::getStorage() {
 
 Health& Appwrite::getHealth() {
     return health;
+}
+
+Messaging& Appwrite::getMessaging() {
+    return messaging;
 }
