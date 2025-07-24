@@ -18,6 +18,11 @@ SRCS = \
     $(SRC_DIR)/Utils.cpp \
     $(SRC_DIR)/Validator.cpp \
 
+# TEST
+testSDK: $(SRCS) $(EXAMPLES_DIR)/testSDK.cpp
+				@mkdir -p ./$(TESTS_DIR)
+				$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/testSDK $(SRCS) $(EXAMPLES_DIR)/testSDK.cpp $(LDFLAGS)
+
 # Account 
 createAccount: $(SRCS) $(EXAMPLES_DIR)/account/createAccount.cpp
 				@mkdir -p ./$(TESTS_DIR)

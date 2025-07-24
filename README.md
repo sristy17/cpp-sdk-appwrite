@@ -20,7 +20,7 @@ This **C++ SDK** is built from scratch as a **prototype** for interacting with A
 ![Appwrite](https://github.com/appwrite/appwrite/raw/main/public/images/github.png)
 
 
-## Installation
+## Installation (Linux)
 
 ### Prerequisites
 
