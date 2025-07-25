@@ -36,6 +36,7 @@ int postRequest(const std::string &url, const std::string &payload,
     }
 
     // Set the URL and payload for the POST request
+    setCurlPathForWindows(curl);
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, payload.c_str());
 
@@ -76,6 +77,7 @@ int getRequest(const std::string &url, const std::vector<std::string> &headers,
         return -1;
     }
 
+    setCurlPathForWindows(curl);
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 
     struct curl_slist *chunk = NULL;
@@ -113,6 +115,7 @@ int putRequest(const std::string &url, const std::string &payload,
     }
 
     // Set the URL and payload for the PUT request
+    setCurlPathForWindows(curl);
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, payload.c_str());
@@ -156,6 +159,7 @@ int patchRequest(const std::string &url, const std::string &payload,
     }
 
     // Set the URL and payload for the PATCH request
+    setCurlPathForWindows(curl);
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "PATCH");
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, payload.c_str());
@@ -199,6 +203,7 @@ int deleteRequest(const std::string &url,
     }
 
     // Set the URL for the DELETE request
+    setCurlPathForWindows(curl);
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "DELETE");
 
