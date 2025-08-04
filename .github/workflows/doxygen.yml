@@ -1,6 +1,7 @@
 name: "Build & Deploy Doxygen Docs"
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [closed]
     branches:
