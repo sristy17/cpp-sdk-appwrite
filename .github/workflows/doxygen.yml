@@ -37,11 +37,13 @@ jobs:
           find docs-out -mindepth 1 ! -regex '^docs-out/\.git\(/.*\)?' -delete
           cp -R docs/html/* docs-out/
 
-      - name: Commit & Push
-        working-directory: docs-out
+      - name: Commit & Push to `docs` branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin docs || git checkout --orphan docs
+          git switch docs || git checkout -b docs
+          cp -r docs/html/* .
           git add .
           git commit -m "Regenerate Doxygen docs from ${{ github.sha }}" || echo "No changes to commit"
-          git push
+          git push https://x-access-token:${{ secrets.USER_SECRET }}@github.com/${{ github.repository }}.git HEAD:docs
