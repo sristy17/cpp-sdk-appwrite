@@ -46,4 +46,4 @@ jobs:
           cp -r docs/html/* .
           git add .
           git commit -m "Regenerate Doxygen docs from ${{ github.sha }}" || echo "No changes to commit"
-          git push https://x-access-token:${{ secrets.USER_SECRET }}@github.com/${{ github.repository }}.git HEAD:docs
+          git push --force https://x-access-token:${{ secrets.USER_SECRET }}@github.com/${{ github.repository }}.git HEAD:docs
