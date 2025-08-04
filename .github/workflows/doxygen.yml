@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-and-deploy:
-    if: github.event.pull_request.merged == true
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     permissions:
@@ -34,7 +34,7 @@ jobs:
 
       - name: Copy generated HTML
         run: |
-          rm -rf docs-out/*
+          find docs-out -mindepth 1 ! -regex '^docs-out/\.git\(/.*\)?' -delete
           cp -R docs/html/* docs-out/
 
       - name: Commit & Push
