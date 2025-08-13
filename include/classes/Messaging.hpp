@@ -189,6 +189,14 @@ class Messaging {
      */
     std::string deleteMessages(const std::string &messageId);
 
+    /**
+     * @brief List all targets for a given message.
+     * @param messageId ID of the message.
+     * @param queries Optional query filters.
+     * @return JSON response.
+   */
+    std::string listTargets(const std::string &messageId, 
+                            const std::vector<std::string> &queries = {});
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
